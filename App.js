@@ -2,12 +2,11 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 
 import Onboard from './screens/Onboard';
+import TabNavigation from './navigation/TabNavigation';
 
 export default function App() {
   return (
-    <View>
-      <Onboard />
-    </View>
+    <TabNavigation/>
   );
 }
 

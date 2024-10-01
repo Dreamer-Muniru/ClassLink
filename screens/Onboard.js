@@ -8,7 +8,7 @@ import * as ImagePicker from 'expo-image-picker';
 import { useNavigation } from '@react-navigation/native';
 
 export default function Onboard() {
-    // const navigation = useNavigation();
+    const navigation = useNavigation();
     
     const [image, setImage] = useState(null);
     const db = getFirestore(app);
@@ -45,7 +45,7 @@ export default function Onboard() {
                 if (docRef.id) {
                     setLoading(false);
                     Alert.alert('Success!', 'Teacher onboarded successfully');
-                    // navigation.navigate('Home');
+                    navigation.navigate('Home');
                 }
             });
         });
@@ -91,7 +91,7 @@ export default function Onboard() {
                             <TextInput style={styles.input} placeholder='Years of Experience' value={values.experience} onChangeText={handleChange('experience')} keyboardType='numeric' />
                             <TextInput style={styles.input} placeholder='Address' value={values.address} onChangeText={handleChange('address')} />
 
-                            <TouchableOpacity onPress={handleSubmit} style={{ backgroundColor: loading ? '#ccc' : 'blue' }} disabled={loading} className="p-2 mt-3 bg-blue-500 rounded-full">
+                            <TouchableOpacity onPress={handleSubmit} style={{ backgroundColor: loading ? '#ccc' : 'blue' }} disabled={loading} className="p-2 mt-3 mb-10 bg-blue-500 rounded-full">
                                 {loading ? <ActivityIndicator color='green' /> : <Text className="text-center text-white text-[18px]">Submit</Text>}
                             </TouchableOpacity>
                         </View>
