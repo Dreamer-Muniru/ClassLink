@@ -54,8 +54,7 @@ export default function Onboard() {
     return (
         <KeyboardAvoidingView>
             <ScrollView style={styles.container}>
-                <Text style={styles.header}>Onboard Teacher</Text>
-                <Text className="text-center text-[16px] pt-2 text-grey-500 mb-2">Onboard yourself to start teaching!</Text>
+                <Text className="text-center text-[30px] text-grey-500 mb-2">Onboard yourself to start teaching!</Text>
                 
                 <Formik 
                     initialValues={{ fullName: '', phoneNumber: '', email: '', specialization: '', qualification: '', experience: '', address: '', image: '' }}
@@ -104,7 +103,7 @@ export default function Onboard() {
 
 const styles = StyleSheet.create({
     container: {
-        padding: 30,
+        padding: 10,
     },
     input: {
         borderWidth: 1,
