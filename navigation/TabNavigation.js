@@ -6,6 +6,8 @@ import Onboard from '../screens/Onboard'
 import Home from '../screens/Home'
 import Profile from '../screens/Profile';
 import UserRegistration from '../screens/UserRegistration';
+import Notification from '../screens/Notification';
+import Resources from '../screens/Resources';
 
 const Tab = createBottomTabNavigator()
 export default function TabNavigation() {
@@ -14,6 +16,8 @@ export default function TabNavigation() {
         <Tab.Navigator>
             <Tab.Screen name="Home" component={Home} />
             <Tab.Screen name="Register" component={UserRegistration}/>
+            <Tab.Screen name="Notification" component={Notification}/>
+            <Tab.Screen name="Resources" component={Resources}/>
             <Tab.Screen name="Profile" component={Profile}/>
         </Tab.Navigator>
     </NavigationContainer>
