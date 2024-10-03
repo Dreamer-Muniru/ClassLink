@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { View, Text, FlatList, Image, StyleSheet, ActivityIndicator } from 'react-native';
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
-import { app } from '../firebase/firebaseConfig'; // Make sure this path is correct
+import { app } from '../firebase/firebaseConfig';
+import { useFocusEffect } from '@react-navigation/native';
 
 export default function HomeScreen() {
     const [teachers, setTeachers] = useState([]);
@@ -9,24 +10,29 @@ export default function HomeScreen() {
 
     const db = getFirestore(app);
 
-    useEffect(() => {
-        // Fetch teachers from Firestore
-        const fetchTeachers = async () => {
-            try {
-                const querySnapshot = await getDocs(collection(db, 'teachers'));
-                const teacherList = [];
-                querySnapshot.forEach((doc) => {
-                    teacherList.push({ id: doc.id, ...doc.data() });
-                });
-                setTeachers(teacherList);
-                setLoading(false);
-            } catch (error) {
-                console.log("Error fetching teacher data:", error);
-                setLoading(false);
-            }
-        };
-        fetchTeachers();
-    }, []);
+    // Function to fetch teachers from Firestore
+    const fetchTeachers = async () => {
+        setLoading(true);
+        try {
+            const querySnapshot = await getDocs(collection(db, 'teachers'));
+            const teacherList = [];
+            querySnapshot.forEach((doc) => {
+                teacherList.push({ id: doc.id, ...doc.data() });
+            });
+            setTeachers(teacherList);
+            setLoading(false);
+        } catch (error) {
+            console.log("Error fetching teacher data:", error);
+            setLoading(false);
+        }
+    };
+
+    // Reload data when the HomeScreen is focused
+    useFocusEffect(
+        useCallback(() => {
+            fetchTeachers();
+        }, [])
+    );
 
     const renderItem = ({ item }) => (
         <View style={styles.card}>
@@ -47,8 +53,8 @@ export default function HomeScreen() {
                     data={teachers}
                     renderItem={renderItem}
                     keyExtractor={(item) => item.id}
-                    numColumns={2} // Two columns layout
-                    columnWrapperStyle={styles.row} // Adjust the row style
+                    numColumns={2} 
+                    columnWrapperStyle={styles.row} 
                     contentContainerStyle={styles.listContainer}
                 />
             )}
@@ -72,14 +78,14 @@ const styles = StyleSheet.create({
         paddingBottom: 20,
     },
     row: {
-        justifyContent: 'space-between', // Space between the two columns
+        justifyContent: 'space-between', 
     },
     card: {
         backgroundColor: '#fff',
         padding: 10,
         borderRadius: 10,
         marginBottom: 15,
-        width: '48%', // Take nearly half of the screen width
+        width: '48%', 
         alignItems: 'center',
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 2 },
@@ -103,8 +109,8 @@ const styles = StyleSheet.create({
         marginTop: 5,
     },
     qualification: {
-        fontSize: 12,
-        color: '#666',
-        marginTop: 5,
-    },
+      fontSize: 12,
+      color: '#666',
+      marginTop: 5,
+  },
 });
