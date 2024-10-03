@@ -5,6 +5,7 @@ import { collection, addDoc, getFirestore } from 'firebase/firestore';
 import { getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage';
 import { Formik } from 'formik';
 import {Picker} from '@react-native-picker/picker';
+import * as ImagePicker from 'expo-image-picker';
 import { useNavigation } from '@react-navigation/native';
 
 export default function UserRegistration() {
@@ -43,7 +44,7 @@ export default function UserRegistration() {
 
         try {
             // Add user info to Firebase Firestore
-            const docRef = await addDoc(collection(db, "userPost"), { ...values, role });
+            const docRef = await addDoc(collection(db, "teachers"), { ...values, role });
             if (docRef.id) {
                 setLoading(false);
                 Alert.alert('Success!', `${role === 'teacher' ? 'Teacher' : 'Student'} registered successfully`);
