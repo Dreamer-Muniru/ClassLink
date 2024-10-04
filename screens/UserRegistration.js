@@ -3,20 +3,20 @@ import { View, Text, TextInput, TouchableOpacity, ActivityIndicator, Alert, Scro
 import { app } from '../firebase/firebaseConfig';
 import { collection, addDoc, getFirestore } from 'firebase/firestore';
 import { getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage';
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'; // Firebase Authentication
 import { Formik } from 'formik';
-import {Picker} from '@react-native-picker/picker';
+import { Picker } from '@react-native-picker/picker';
 import * as ImagePicker from 'expo-image-picker';
 import { useNavigation } from '@react-navigation/native';
 
-export default function UserRegistration({navigation}) {
-    // const navigation = useNavigation();
-    
+export default function UserRegistration({ navigation }) {
     const [loading, setLoading] = useState(false);
     const [role, setRole] = useState('student'); // Default to 'student'
     const [image, setImage] = useState(null); // For teacher profile image
     const db = getFirestore(app);
     const storage = getStorage();
 
+    // Image picking method for teacher
     const pickImage = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({
             mediaTypes: ImagePicker.MediaTypeOptions.All,
@@ -24,43 +24,69 @@ export default function UserRegistration({navigation}) {
             aspect: [4, 4],
             quality: 1,
         });
-    
+
         if (!result.canceled) {
             setImage(result.assets[0].uri);
         }
     };
 
+    // Function to handle form submission
     const onSubmitMethod = async (values) => {
         setLoading(true);
 
-        if (role === 'teacher' && image) {
-            // Upload image to Firebase storage if teacher
-            const resp = await fetch(image);
-            const blob = await resp.blob();
-            const storageRef = ref(storage, 'teacherProfiles/' + Date.now() + ".jpg");
-
-            await uploadBytes(storageRef, blob);
-            values.image = await getDownloadURL(storageRef);
-        }
+        // Get Firebase Authentication instance
+        const auth = getAuth(app);
 
         try {
-            // Add user info to Firebase Firestore
-            const docRef = await addDoc(collection(db, "teachers"), { ...values, role });
-            if (docRef.id) {
-                setLoading(false);
-                Alert.alert('Success!', `${role === 'teacher' ? 'Teacher' : 'Student'} registered successfully`);
-                navigation.navigate('Home');
+            // Create user in Firebase Authentication
+            const userCredential = await createUserWithEmailAndPassword(auth, values.email, values.password);
+            const user = userCredential.user;
+
+            // Handle teacher-specific logic
+            if (role === 'teacher') {
+                if (image) {
+                    // Upload image to Firebase Storage for teachers
+                    const resp = await fetch(image);
+                    const blob = await resp.blob();
+                    const storageRef = ref(storage, 'teacherProfiles/' + Date.now() + ".jpg");
+
+                    await uploadBytes(storageRef, blob);
+                    values.image = await getDownloadURL(storageRef);
+                }
+
+                // Add teacher info to Firestore (with user's UID from Firebase Authentication)
+                await addDoc(collection(db, "teachers"), { 
+                    ...values, 
+                    role, 
+                    uid: user.uid 
+                });
             }
+
+            // Handle student logic
+            if (role === 'student') {
+                // Add student info to Firestore (with user's UID from Firebase Authentication)
+                await addDoc(collection(db, "students"), { 
+                    email: values.email, 
+                    role, 
+                    uid: user.uid 
+                });
+            }
+
+            setLoading(false);
+            Alert.alert('Success!', `${role === 'teacher' ? 'Teacher' : 'Student'} registered successfully`);
+            navigation.navigate('Home');
         } catch (error) {
             setLoading(false);
-            Alert.alert('Error', 'Something went wrong!');
+            Alert.alert('Error', error.message || 'Something went wrong!');
         }
     };
 
     return (
         <ScrollView style={styles.container}>
-            <Text className="text-center text-[30px] text-grey-500 mb-2">Register as a {role === 'teacher' ? 'Teacher' : 'Student'}</Text>
-            
+            <Text className="text-center text-[30px] text-grey-500 mb-2">
+                Register as a {role === 'teacher' ? 'Teacher' : 'Student'}
+            </Text>
+
             <Formik
                 initialValues={{ email: '', password: '', confirmPassword: '', fullName: '', phoneNumber: '', specialization: '', qualification: '', experience: '', address: '' }}
                 onSubmit={values => onSubmitMethod(values)}
@@ -125,10 +151,11 @@ export default function UserRegistration({navigation}) {
                         {role === 'teacher' && (
                             <>
                                 <TouchableOpacity onPress={pickImage}>
-                                    {image ? 
+                                    {image ? (
                                         <Image source={{ uri: image }} style={{ width: 100, height: 100, borderRadius: 10 }} />
-                                        : <Image source={require('../assets/icon.png')} style={{ width: 100, height: 100, borderRadius: 10 }} />
-                                    }
+                                    ) : (
+                                        <Image source={require('../assets/icon.png')} style={{ width: 100, height: 100, borderRadius: 10 }} />
+                                    )}
                                     <Text>Upload Profile Image</Text>
                                 </TouchableOpacity>
 
@@ -187,9 +214,9 @@ export default function UserRegistration({navigation}) {
                 )}
             </Formik>
 
-                    <TouchableOpacity onPress={() => navigation.navigate('UserLogin')}>
-                        <Text>Login</Text>
-                    </TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('UserLogin')}>
+                <Text>Login</Text>
+            </TouchableOpacity>
         </ScrollView>
     );
 }
