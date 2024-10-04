@@ -9,12 +9,13 @@ import * as ImagePicker from 'expo-image-picker';
 import { useNavigation } from '@react-navigation/native';
 
 export default function UserRegistration() {
+    const navigation = useNavigation();
+    
     const [loading, setLoading] = useState(false);
     const [role, setRole] = useState('student'); // Default to 'student'
     const [image, setImage] = useState(null); // For teacher profile image
     const db = getFirestore(app);
     const storage = getStorage();
-    const navigation = useNavigation();
 
     const pickImage = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({
@@ -185,6 +186,10 @@ export default function UserRegistration() {
                     </View>
                 )}
             </Formik>
+
+                    <TouchableOpacity onPress={() => navigation.navigate("UserLogin")}>
+                        <Text>Login</Text>
+                    </TouchableOpacity>
         </ScrollView>
     );
 }
