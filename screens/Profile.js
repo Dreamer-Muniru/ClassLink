@@ -4,8 +4,8 @@ import { auth } from '../firebase/firebaseConfig';
 import { signOut } from 'firebase/auth';
 import { useNavigation } from '@react-navigation/native';
 
-const Profile = () => {
-  const navigation = useNavigation();
+const Profile = ({navigation}) => {
+  // const navigation = useNavigation();
 
   const handleLogout = async () => {
     try {

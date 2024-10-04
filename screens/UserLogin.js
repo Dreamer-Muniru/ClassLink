@@ -5,8 +5,8 @@ import { auth } from '../firebase/firebaseConfig';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
 
-export default function UserLogin() {
-  const navigation = useNavigation();
+export default function UserLogin({navigation}) {
+  // const navigation = useNavigation();
   
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

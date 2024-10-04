@@ -1,24 +1,23 @@
-import { View, Text } from 'react-native';
 import React from 'react';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import UserRegistration from '../screens/UserRegistration'
-import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-
-import HomeScreen from '../screens/Home';
+import UserRegistration from '../screens/UserRegistration';
+import HomeScreen from '../screens/HomeScreen';
 import UserLogin from '../screens/UserLogin';
-import TabNavigation from './TabNavigation';
+import TabNavigation from './TabNavigation'; // Import your tab navigation
 
-// const Stack = createNativeStackNavigator()
 const Stack = createStackNavigator();
 
-export default function StackNavigation() {
-
+export default function StackNavigation({ isLoggedIn }) {
   return (
-      <Stack.Navigator>
-          <Stack.Screen name="UserLogin" component={UserLogin} />
-          <Stack.Screen name="UserRegister" component={UserRegistration}/>
-      </Stack.Navigator>
-
-  )
+    <Stack.Navigator>
+      {isLoggedIn ? (
+        <Stack.Screen name="Home" component={TabNavigation} options={{ headerShown: false }} />
+      ) : (
+        <>
+          <Stack.Screen name="UserLogin" component={UserLogin} options={{ headerShown: false }} />
+          <Stack.Screen name="UserRegistration" component={UserRegistration} />
+        </>
+      )}
+    </Stack.Navigator>
+  );
 }

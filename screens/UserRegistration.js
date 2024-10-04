@@ -8,8 +8,8 @@ import {Picker} from '@react-native-picker/picker';
 import * as ImagePicker from 'expo-image-picker';
 import { useNavigation } from '@react-navigation/native';
 
-export default function UserRegistration() {
-    const navigation = useNavigation();
+export default function UserRegistration({navigation}) {
+    // const navigation = useNavigation();
     
     const [loading, setLoading] = useState(false);
     const [role, setRole] = useState('student'); // Default to 'student'
@@ -187,7 +187,7 @@ export default function UserRegistration() {
                 )}
             </Formik>
 
-                    <TouchableOpacity onPress={() => navigation.navigate("UserLogin")}>
+                    <TouchableOpacity onPress={() => navigation.navigate('UserLogin')}>
                         <Text>Login</Text>
                     </TouchableOpacity>
         </ScrollView>
