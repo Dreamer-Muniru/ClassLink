@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import StackNavigation from './navigation/StackNavigation';
 import { useEffect, useState } from 'react';
-import { auth } from './firebase/firebaseConfig'; // Adjust the path as necessary
+import { auth } from './firebase/firebaseConfig'; 
 import { onAuthStateChanged } from 'firebase/auth';
 
 export default function App() {

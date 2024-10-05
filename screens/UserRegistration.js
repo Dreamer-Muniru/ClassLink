@@ -30,18 +30,18 @@ export default function UserRegistration({ navigation }) {
         }
     };
 
-    // Function to handle form submission
+    
     const onSubmitMethod = async (values) => {
         setLoading(true);
 
         const auth = getAuth(app);
 
         try {
-            // Create user in Firebase Authentication using email and password
+            // Creating user in Firebase Authentication using email and password
             const userCredential = await createUserWithEmailAndPassword(auth, values.email, values.password);
             const user = userCredential.user;
 
-            // Handle teacher-specific logic
+          
             if (role === 'teacher') {
                 if (image) {
                     // Upload image to Firebase Storage for teachers
@@ -53,7 +53,7 @@ export default function UserRegistration({ navigation }) {
                     values.image = await getDownloadURL(storageRef);
                 }
 
-                // Add teacher info to Firestore (with user's UID from Firebase Authentication)
+                // Adding teacher information to Firestore 
                 await addDoc(collection(db, "teachers"), { 
                     ...values, 
                     role, 
@@ -145,7 +145,7 @@ export default function UserRegistration({ navigation }) {
                         />
                         {errors.confirmPassword && <Text style={styles.error}>{errors.confirmPassword}</Text>}
 
-                        {/* Additional Fields for Teachers */}
+                        
                         {role === 'teacher' && (
                             <>
                                 <TouchableOpacity onPress={pickImage}>
@@ -204,7 +204,7 @@ export default function UserRegistration({ navigation }) {
                             </>
                         )}
 
-                        {/* Submit Button */}
+                        {/* Submit button */}
                         <TouchableOpacity onPress={handleSubmit} style={{ backgroundColor: loading ? '#ccc' : 'blue' }} disabled={loading} className="p-2 mt-3 mb-10 bg-blue-500 rounded-full">
                             {loading ? <ActivityIndicator color="green" /> : <Text className="text-center text-white text-[18px]">Submit</Text>}
                         </TouchableOpacity>

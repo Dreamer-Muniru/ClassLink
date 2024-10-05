@@ -3,7 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import UserRegistration from '../screens/UserRegistration';
 import HomeScreen from '../screens/HomeScreen';
 import UserLogin from '../screens/UserLogin';
-import TabNavigation from './TabNavigation'; // Import your tab navigation
+import TabNavigation from './TabNavigation';
 import TeacherDetails from '../screens/TeacherDetails';
 
 const Stack = createStackNavigator();
@@ -20,7 +20,7 @@ export default function StackNavigation({ isLoggedIn }) {
         <>
           <Stack.Screen name="UserLogin" component={UserLogin} options={{ headerShown: false }} />
           <Stack.Screen name="UserRegistration" component={UserRegistration} />
-         <Stack.Screen name="TeacherDetails" component={TeacherDetails} />
+         
           
         </>
       )}
