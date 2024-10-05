@@ -4,6 +4,7 @@ import UserRegistration from '../screens/UserRegistration';
 import HomeScreen from '../screens/HomeScreen';
 import UserLogin from '../screens/UserLogin';
 import TabNavigation from './TabNavigation'; // Import your tab navigation
+import TeacherDetails from '../screens/TeacherDetails';
 
 const Stack = createStackNavigator();
 
@@ -11,11 +12,16 @@ export default function StackNavigation({ isLoggedIn }) {
   return (
     <Stack.Navigator>
       {isLoggedIn ? (
+        <>
         <Stack.Screen name="Home" component={TabNavigation} options={{ headerShown: false }} />
+        <Stack.Screen name="TeacherDetails" component={TeacherDetails} />
+        </>
       ) : (
         <>
           <Stack.Screen name="UserLogin" component={UserLogin} options={{ headerShown: false }} />
           <Stack.Screen name="UserRegistration" component={UserRegistration} />
+         <Stack.Screen name="TeacherDetails" component={TeacherDetails} />
+          
         </>
       )}
     </Stack.Navigator>

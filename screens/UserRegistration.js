@@ -3,7 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, ActivityIndicator, Alert, Scro
 import { app } from '../firebase/firebaseConfig';
 import { collection, addDoc, getFirestore } from 'firebase/firestore';
 import { getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'; // Firebase Authentication
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'; 
 import { Formik } from 'formik';
 import { Picker } from '@react-native-picker/picker';
 import * as ImagePicker from 'expo-image-picker';
@@ -11,8 +11,8 @@ import { useNavigation } from '@react-navigation/native';
 
 export default function UserRegistration({ navigation }) {
     const [loading, setLoading] = useState(false);
-    const [role, setRole] = useState('student'); // Default to 'student'
-    const [image, setImage] = useState(null); // For teacher profile image
+    const [role, setRole] = useState('student'); 
+    const [image, setImage] = useState(null); 
     const db = getFirestore(app);
     const storage = getStorage();
 
@@ -34,11 +34,10 @@ export default function UserRegistration({ navigation }) {
     const onSubmitMethod = async (values) => {
         setLoading(true);
 
-        // Get Firebase Authentication instance
         const auth = getAuth(app);
 
         try {
-            // Create user in Firebase Authentication
+            // Create user in Firebase Authentication using email and password
             const userCredential = await createUserWithEmailAndPassword(auth, values.email, values.password);
             const user = userCredential.user;
 
@@ -64,7 +63,6 @@ export default function UserRegistration({ navigation }) {
 
             // Handle student logic
             if (role === 'student') {
-                // Add student info to Firestore (with user's UID from Firebase Authentication)
                 await addDoc(collection(db, "students"), { 
                     email: values.email, 
                     role, 

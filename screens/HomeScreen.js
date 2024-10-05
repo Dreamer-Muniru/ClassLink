@@ -1,12 +1,14 @@
 import React, { useState, useCallback } from 'react';
-import { View, Text, FlatList, Image, StyleSheet, ActivityIndicator } from 'react-native';
+import { View, Text, FlatList, Image, StyleSheet, ActivityIndicator, TouchableOpacity } from 'react-native';
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
 import { app } from '../firebase/firebaseConfig';
 import { useFocusEffect } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
-export default function HomeScreen() {
+export default function HomeScreen({navigation}) {
     const [teachers, setTeachers] = useState([]);
     const [loading, setLoading] = useState(true);
+    // const navigation = useNavigation(); // Use navigation
 
     const db = getFirestore(app);
 
@@ -35,12 +37,12 @@ export default function HomeScreen() {
     );
 
     const renderItem = ({ item }) => (
-        <View style={styles.card}>
+        <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('TeacherDetails', { teacher: item })}>
             <Image source={{ uri: item.image }} style={styles.profileImage} />
             <Text style={styles.name}>{item.fullName}</Text>
             <Text style={styles.specialization}>{item.specialization}</Text>
             <Text style={styles.qualification}>{item.qualification}</Text>
-        </View>
+        </TouchableOpacity>
     );
 
     return (
@@ -109,8 +111,8 @@ const styles = StyleSheet.create({
         marginTop: 5,
     },
     qualification: {
-      fontSize: 12,
-      color: '#666',
-      marginTop: 5,
-  },
+        fontSize: 12,
+        color: '#666',
+        marginTop: 5,
+    },
 });
