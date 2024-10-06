@@ -63,10 +63,10 @@ export default function UserLogin({navigation}) {
         {loading ? <ActivityIndicator color="#fff" /> : <Text style={styles.buttonText}>Login</Text>}
       </TouchableOpacity>
 
-      <View className="mt-8 justify-center">
-        <Text className="text-[22px] text-green-500 text-center">Don't have an account?</Text>
-        <TouchableOpacity onPress={() => navigation.navigate("UserRegistration")}>
-          <Text className="text-[22px] text-clip bg-blue-600 text-white w-[100px] p-2 text-center">Register</Text>
+      <View className="mt-8">
+        <Text className="text-[22px] text-[#0f4c5c] text-center">Don't have an account?</Text>
+        <TouchableOpacity className="mt-8 justify-items-center" onPress={() => navigation.navigate("UserRegistration")}>
+          <Text style={styles.register_text} className="text-[22px] text-clip bg-[#e63946] text-white w-[100px] p-2 ">Register</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -82,26 +82,32 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   header: {
-    fontSize: 28,
+    fontSize: 40,
+    color: '#0f4c5c',
     textAlign: 'center',
     marginBottom: 20,
     fontWeight: 'bold',
   },
   input: {
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: '#0f4c5c',
     borderRadius: 5,
     padding: 10,
     marginBottom: 15,
   },
   button: {
-    backgroundColor: '#007bff',
+    backgroundColor: '#e63946',
     padding: 15,
     borderRadius: 5,
     alignItems: 'center',
   },
+  register_text:{
+    marginLeft: 100,
+    borderRadius: 10
+  },
   buttonText: {
     color: '#fff',
-    fontSize: 18,
+    fontSize: 20,
   },
+  
 });
