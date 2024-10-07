@@ -19,7 +19,7 @@ export default function StackNavigation({ isLoggedIn }) {
       ) : (
         <>
           <Stack.Screen name="UserLogin" component={UserLogin} options={{ headerShown: false }} />
-          <Stack.Screen name="UserRegistration" component={UserRegistration} />
+          <Stack.Screen name="UserRegistration" component={UserRegistration} options={{headerShown: false}} />
          
           
         </>

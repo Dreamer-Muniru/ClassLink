@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
+import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 
 import Profile from '../screens/Profile';
 import Notification from '../screens/Notification';
@@ -23,8 +24,24 @@ export default function TabNavigation() {
                     <Ionicons name="home" size={18} color="red" />
                 )
             }} />
-            <Tab.Screen name="Notification" component={Notification}/>
-            <Tab.Screen name="Resources" component={Resources}/>
+            <Tab.Screen name="Resources" component={Resources}
+                options={{
+                    tabBarLabel:({color})=>(
+                        <Text className="text-[18px] mb-[20px]">Resources</Text>
+                    ),
+                    tabBarIcon:()=>(
+                        <FontAwesome5 name="chalkboard-teacher" size={18} color="black" />
+                    )
+                }}
+            />
+            <Tab.Screen name="Notification" component={Notification}
+                options={{
+                    headerStyle:{
+                        backgroundColor: '#3b82f6'
+                    },
+                    headerTitle: 'Notification'
+                }}
+            />
             <Tab.Screen name="Profile" component={Profile}/>
         </Tab.Navigator>
     

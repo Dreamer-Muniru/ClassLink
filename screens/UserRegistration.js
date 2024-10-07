@@ -81,7 +81,7 @@ export default function UserRegistration({ navigation }) {
 
     return (
         <ScrollView style={styles.container}>
-            <Text className="text-center text-[30px] text-[#2a9d8f] mb-2 font-bold">
+            <Text className="text-center text-[30px] text-[#2a9d8f] mb-2 font-bold mt-[60px]">
                 Register as a {role === 'teacher' ? 'Teacher' : 'Student'}
             </Text>
 
@@ -213,7 +213,7 @@ export default function UserRegistration({ navigation }) {
             </Formik>
             <View>
                 <Text className="text-[22px] text-[#0f4c5c] text-center">Already have an account?</Text>
-                <TouchableOpacity onPress={() => navigation.navigate('UserLogin')} className="mt-5">
+                <TouchableOpacity onPress={() => navigation.navigate('UserLogin')} className="mt-5 mb-7">
                     <Text className="text-[22px] text-center bg-[#2a9d8f] text-white w-[150px] p-3 ml-[100px] rounded-md ">Login</Text>
                 </TouchableOpacity>
             </View>
