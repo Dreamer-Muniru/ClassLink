@@ -81,7 +81,7 @@ export default function UserRegistration({ navigation }) {
 
     return (
         <ScrollView style={styles.container}>
-            <Text className="text-center text-[30px] text-grey-500 mb-2">
+            <Text className="text-center text-[30px] text-[#2a9d8f] mb-2 font-bold">
                 Register as a {role === 'teacher' ? 'Teacher' : 'Student'}
             </Text>
 
@@ -110,7 +110,7 @@ export default function UserRegistration({ navigation }) {
                         {/* Role Selection */}
                         <Picker
                             selectedValue={role}
-                            style={styles.input}
+                            style={styles.picker_input}
                             onValueChange={(itemValue) => setRole(itemValue)}
                         >
                             <Picker.Item label="Student" value="student" />
@@ -205,16 +205,18 @@ export default function UserRegistration({ navigation }) {
                         )}
 
                         {/* Submit button */}
-                        <TouchableOpacity onPress={handleSubmit} style={{ backgroundColor: loading ? '#ccc' : 'blue' }} disabled={loading} className="p-2 mt-3 mb-10 bg-blue-500 rounded-full">
-                            {loading ? <ActivityIndicator color="green" /> : <Text className="text-center text-white text-[18px]">Submit</Text>}
+                        <TouchableOpacity onPress={handleSubmit} style={{ backgroundColor: loading ? '#ccc' : '#e63946' }} disabled={loading} className="p-2 mt-3 mb-10 rounded-full">
+                            {loading ? <ActivityIndicator color="green" /> : <Text className="text-center font-bold text-white text-[22px]">Submit</Text>}
                         </TouchableOpacity>
                     </View>
                 )}
             </Formik>
-
-            <TouchableOpacity onPress={() => navigation.navigate('UserLogin')}>
-                <Text>Login</Text>
-            </TouchableOpacity>
+            <View>
+                <Text className="text-[22px] text-[#0f4c5c] text-center">Already have an account?</Text>
+                <TouchableOpacity onPress={() => navigation.navigate('UserLogin')} className="mt-5">
+                    <Text className="text-[22px] text-center bg-[#2a9d8f] text-white w-[150px] p-3 ml-[100px] rounded-md ">Login</Text>
+                </TouchableOpacity>
+            </View>
         </ScrollView>
     );
 }
@@ -225,15 +227,22 @@ const styles = StyleSheet.create({
     },
     input: {
         borderWidth: 1,
+        borderColor: '#2a9d8f',
         borderRadius: 10,
         padding: 10,
         marginTop: 10,
         marginBottom: 10,
         fontSize: 17,
     },
+    picker_input:{
+        color: 'red',
+        marginTop: 10,
+        marginBottom: 10,
+        fontSize: 20,
+    },
     error: {
         color: 'red',
-        fontSize: 12,
+        fontSize: 16,
         marginBottom: 5,
     },
 });

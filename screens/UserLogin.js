@@ -66,7 +66,7 @@ export default function UserLogin({navigation}) {
       <View className="mt-8">
         <Text className="text-[22px] text-[#0f4c5c] text-center">Don't have an account?</Text>
         <TouchableOpacity className="mt-8 justify-items-center" onPress={() => navigation.navigate("UserRegistration")}>
-          <Text style={styles.register_text} className="text-[22px] text-clip bg-[#e63946] text-white w-[100px] p-2 ">Register</Text>
+          <Text className="text-[22px] text-center bg-[#2a9d8f] text-white w-[150px] p-3 ml-[100px] rounded-md ">Register</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -83,14 +83,14 @@ const styles = StyleSheet.create({
   },
   header: {
     fontSize: 40,
-    color: '#0f4c5c',
+    color: '#2a9d8f',
     textAlign: 'center',
     marginBottom: 20,
     fontWeight: 'bold',
   },
   input: {
     borderWidth: 1,
-    borderColor: '#0f4c5c',
+    borderColor: '#2a9d8f',
     borderRadius: 5,
     padding: 10,
     marginBottom: 15,
@@ -101,13 +101,11 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     alignItems: 'center',
   },
-  register_text:{
-    marginLeft: 100,
-    borderRadius: 10
-  },
+
   buttonText: {
     color: '#fff',
     fontSize: 20,
+    fontWeight: 'bold'
   },
   
 });
