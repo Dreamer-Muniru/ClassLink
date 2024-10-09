@@ -235,7 +235,8 @@ const styles = StyleSheet.create({
         fontSize: 17,
     },
     picker_input:{
-        color: 'red',
+        color: '#2a9d8f',
+        fontWeight: 'bold',
         marginTop: 10,
         marginBottom: 10,
         fontSize: 20,

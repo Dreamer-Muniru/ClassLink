@@ -30,7 +30,7 @@ export default function TabNavigation() {
                         <Text className="text-[18px] mb-[20px]">Resources</Text>
                     ),
                     tabBarIcon:()=>(
-                        <FontAwesome5 name="chalkboard-teacher" size={18} color="black" />
+                        <FontAwesome5 name="chalkboard-teacher" size={14} color="black" />
                     )
                 }}
             />
