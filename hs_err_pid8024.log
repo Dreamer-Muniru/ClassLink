@@ -1,0 +1,155 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 266338304 bytes for Failed to commit area from 0x0000000702800000 to 0x0000000712600000 of length 266338304.
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (t:/workspace/open/src/hotspot/os/windows/os_windows.cpp:3269), pid=8024, tid=16688
+#
+# JRE version:  (11.0.2+9) (build )
+# Java VM: OpenJDK 64-Bit Server VM (11.0.2+9, mixed mode, aot, sharing, tiered, compressed oops, g1 gc, windows-amd64)
+# No core dump will be written. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: 
+
+Host: Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz, 8 cores, 15G,  Windows 10 , 64 bit Build 19041 (10.0.19041.4957)
+Time: Fri Oct 11 11:47:20 2024 Coordinated Universal Time elapsed time: 0 seconds (0d 0h 0m 0s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x0000025ccb5aa800):  JavaThread "Unknown thread" [_thread_in_vm, id=16688, stack(0x00000092feb00000,0x00000092fec00000)]
+
+Stack: [0x00000092feb00000,0x00000092fec00000]
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x63489a]
+V  [jvm.dll+0x771f9f]
+V  [jvm.dll+0x773648]
+V  [jvm.dll+0x773d03]
+V  [jvm.dll+0x25eba8]
+V  [jvm.dll+0x631d3a]
+V  [jvm.dll+0x626775]
+V  [jvm.dll+0x313ffc]
+V  [jvm.dll+0x313e82]
+V  [jvm.dll+0x3196e6]
+V  [jvm.dll+0x36579f]
+V  [jvm.dll+0x3651c0]
+V  [jvm.dll+0x2f0ff8]
+V  [jvm.dll+0x2f2156]
+V  [jvm.dll+0x74b4f7]
+V  [jvm.dll+0x74cc3f]
+V  [jvm.dll+0x372609]
+V  [jvm.dll+0x731b69]
+V  [jvm.dll+0x3e1bad]
+V  [jvm.dll+0x3e3e81]
+C  [java.exe+0x3607]
+C  [java.exe+0x1746c]
+C  [KERNEL32.DLL+0x17374]
+C  [ntdll.dll+0x4cc91]
+
+
+---------------  P R O C E S S  ---------------
+
+Threads class SMR info:
+_java_thread_list=0x0000025cc9391110, length=0, elements={
+}
+
+Java Threads: ( => current thread )
+
+Other Threads:
+  0x0000025ccb5c2800 GCTaskThread "GC Thread#0" [stack: 0x00000092fec00000,0x00000092fed00000] [id=9340]
+  0x0000025ccb621000 ConcurrentGCThread "G1 Main Marker" [stack: 0x00000092fed00000,0x00000092fee00000] [id=6320]
+  0x0000025ccb622000 ConcurrentGCThread "G1 Conc#0" [stack: 0x00000092fee00000,0x00000092fef00000] [id=6356]
+
+[error occurred during error reporting (printing all threads), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007ffd31f4f5b7]
+
+VM state:not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x0000025ccb5aa490] Heap_lock - owner thread: 0x0000025ccb5aa800
+
+Heap address: 0x0000000702800000, size: 4056 MB, Compressed Oops mode: Non-zero based: 0x0000000702800000
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 0
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+Events (0 events):
+No events
+
+
+Dynamic libraries:
+0x00007ff793200000 - 0x00007ff793245000 	C:\Users\dell\AppData\Local\jdk-11.0.2\bin\java.exe
+0x00007ffdc3bd0000 - 0x00007ffdc3dc8000 	C:\WINDOWS\SYSTEM32\ntdll.dll
+0x00007ffdc21e0000 - 0x00007ffdc22a2000 	C:\WINDOWS\System32\KERNEL32.DLL
+0x00007ffdc15b0000 - 0x00007ffdc18ae000 	C:\WINDOWS\System32\KERNELBASE.dll
+0x00007ffdc39f0000 - 0x00007ffdc3b8d000 	C:\WINDOWS\System32\USER32.dll
+0x00007ffdc14f0000 - 0x00007ffdc1512000 	C:\WINDOWS\System32\win32u.dll
+0x00007ffdc2cc0000 - 0x00007ffdc2ceb000 	C:\WINDOWS\System32\GDI32.dll
+0x00007ffdc1ab0000 - 0x00007ffdc1bc7000 	C:\WINDOWS\System32\gdi32full.dll
+0x00007ffdc18b0000 - 0x00007ffdc194d000 	C:\WINDOWS\System32\msvcp_win.dll
+0x00007ffdc1280000 - 0x00007ffdc1380000 	C:\WINDOWS\System32\ucrtbase.dll
+0x00007ffda81d0000 - 0x00007ffda846a000 	C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.19041.4355_none_60b8b9eb71f62e16\COMCTL32.dll
+0x00007ffdc36e0000 - 0x00007ffdc377e000 	C:\WINDOWS\System32\msvcrt.dll
+0x00007ffdc1fe0000 - 0x00007ffdc200f000 	C:\WINDOWS\System32\IMM32.DLL
+0x00007ffdabd10000 - 0x00007ffdabd26000 	C:\Users\dell\AppData\Local\jdk-11.0.2\bin\vcruntime140.dll
+0x00007ffd714b0000 - 0x00007ffd7155a000 	C:\Users\dell\AppData\Local\jdk-11.0.2\bin\msvcp140.dll
+0x00007ffd31c50000 - 0x00007ffd32773000 	C:\Users\dell\AppData\Local\jdk-11.0.2\bin\server\jvm.dll
+0x00007ffdc3940000 - 0x00007ffdc39f0000 	C:\WINDOWS\System32\ADVAPI32.dll
+0x00007ffdc2d00000 - 0x00007ffdc2da0000 	C:\WINDOWS\System32\sechost.dll
+0x00007ffdc2da0000 - 0x00007ffdc2ec3000 	C:\WINDOWS\System32\RPCRT4.dll
+0x00007ffdc1bd0000 - 0x00007ffdc1bf7000 	C:\WINDOWS\System32\bcrypt.dll
+0x00007ffdc2a40000 - 0x00007ffdc2a48000 	C:\WINDOWS\System32\PSAPI.DLL
+0x00007ffda9ee0000 - 0x00007ffda9ee9000 	C:\WINDOWS\SYSTEM32\WSOCK32.dll
+0x00007ffdc3610000 - 0x00007ffdc367b000 	C:\WINDOWS\System32\WS2_32.dll
+0x00007ffdb8a50000 - 0x00007ffdb8a5a000 	C:\WINDOWS\SYSTEM32\VERSION.dll
+0x00007ffdade40000 - 0x00007ffdade67000 	C:\WINDOWS\SYSTEM32\WINMM.dll
+0x00007ffdbfaa0000 - 0x00007ffdbfab2000 	C:\WINDOWS\SYSTEM32\kernel.appcore.dll
+0x00007ffdabcf0000 - 0x00007ffdabd01000 	C:\Users\dell\AppData\Local\jdk-11.0.2\bin\verify.dll
+0x00007ffdbef80000 - 0x00007ffdbf164000 	C:\WINDOWS\SYSTEM32\DBGHELP.DLL
+0x00007ffd9ed00000 - 0x00007ffd9ed34000 	C:\WINDOWS\SYSTEM32\dbgcore.DLL
+0x00007ffdc1520000 - 0x00007ffdc15a2000 	C:\WINDOWS\System32\bcryptPrimitives.dll
+0x00007ffd95300000 - 0x00007ffd95328000 	C:\Users\dell\AppData\Local\jdk-11.0.2\bin\java.dll
+0x00007ffd9fba0000 - 0x00007ffd9fbb6000 	C:\Users\dell\AppData\Local\jdk-11.0.2\bin\zip.dll
+0x00007ffdbd020000 - 0x00007ffdbd02a000 	C:\Users\dell\AppData\Local\jdk-11.0.2\bin\jimage.dll
+
+dbghelp: loaded successfully - version: 4.0.5 - missing functions: none
+symbol engine: initialized successfully - sym options: 0x614 - pdb path: .;C:\Users\dell\AppData\Local\jdk-11.0.2\bin;C:\WINDOWS\SYSTEM32;C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.19041.4355_none_60b8b9eb71f62e16;C:\Users\dell\AppData\Local\jdk-11.0.2\bin\server
+
+VM Arguments:
+java_command: <unknown>
+java_class_path (initial): <not set>
+Launcher Type: SUN_STANDARD
+
+[Global flags]
+     intx CICompilerCount                          = 4                                         {product} {ergonomic}
+     uint ConcGCThreads                            = 2                                         {product} {ergonomic}
+     uint G1ConcRefinementThreads                  = 8                                         {product} {ergonomic}
+   size_t G1HeapRegionSize                         = 1048576                                   {product} {ergonomic}
+    uintx GCDrainStackTargetSize                   = 64                                        {product} {ergonomic}
+   size_t InitialHeapSize                          = 266338304                                 {product} {ergonomic}
+   size_t MarkStackSize                            = 4194304                                   {product} {ergonomic}
+   size_t MaxHeapSize                              = 4253024256                                {product} {ergonomic}
+   size_t MinHeapDeltaBytes                        = 1048576                                   {product} {ergonomic}
+    uintx NonNMethodCodeHeapSize                   = 

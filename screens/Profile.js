@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Alert, Image, Linking, ActivityIndicator } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Alert, Image, ActivityIndicator } from 'react-native';
 import { auth } from '../firebase/firebaseConfig';
 import { signOut } from 'firebase/auth';
 import { getFirestore, query, where, getDocs, collection } from 'firebase/firestore';
@@ -8,10 +8,7 @@ const Profile = ({ navigation }) => {
   const [userInfo, setUserInfo] = useState(null);
   const [loading, setLoading] = useState(true);
   const db = getFirestore();
-  const phone = () =>{
-    const url = data.phoneNumber
-    Linking.openURL(`tel:${url}`)
-  }
+
   useEffect(() => {
     const fetchUserInfo = async () => {
       const user = auth.currentUser;
@@ -83,27 +80,28 @@ const Profile = ({ navigation }) => {
             <View className="bg-[#2a9d8f] h-[200px] w-full rounded-bl-[20px] rounded-br-[20px] mb-10">
               <View className="w-[100px] h-[100px] rounded-full mt-[70px]">
                 <View className="bg-[#fff] w-[350px] ml-[20px] h-[200px] rounded-2xl">
-                  <Image source={{ uri: userInfo.image }} style={styles.profileImage} className="mt-[-50px]" />
+                  <Image source={{ uri: userInfo.image }} style={styles.profileImage} className="mt-[-50px] mb-2" />
                   <Text style={styles.header}>{userInfo.fullName}</Text>
-                  <Text style={styles.info}>{userInfo.specialization}</Text>
                   <View className="flex-1 flex-row">
-                    <TouchableOpacity>
-                      <Text style={styles.info}>Contact{userInfo.phoneNumber}</Text>
+                    <TouchableOpacity className="w-[100px] h-[40px] bg-[#2a9d8f] ml-8 rounded-lg">
+                      <Text style={styles.info}>{userInfo.phoneNumber}</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity>
-                    <Text style={styles.info}>Address: {userInfo.address}</Text>
+                    <TouchableOpacity className="w-[100px] h-[40px] bg-[#2a9d8f] ml-10 rounded-lg">
+                      <Text style={styles.info}>{userInfo.address}</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity>
-                      
-                    </TouchableOpacity>
+                    
                   </View>
                 </View>  
              </View>
             </View>
+            <View className="mt-10">
+                <Text style={styles.info}>Specilization:{userInfo.specialization}</Text>
+                <Text style={styles.info} className="">Qualification: {userInfo.qualification}</Text>
+                <Text style={styles.info}>Experience: {userInfo.experience} years</Text>
+
+            </View>
               
               
-              <Text style={styles.info} className="mt-10">Qualification: {userInfo.qualification}</Text>
-              <Text style={styles.info}>Experience: {userInfo.experience} years</Text>
               
             </>
           ) : (
@@ -140,6 +138,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
     textAlign: 'center',
     marginBottom: 10,
+  
+    fontweight: 'bold'
   },
   button: {
     backgroundColor: '#007bff',
@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
     height: 120,
     borderRadius: 60,
     alignSelf: 'center',
-    marginBottom: 20,
+   
   },
 });
 
