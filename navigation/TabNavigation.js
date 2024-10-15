@@ -22,6 +22,7 @@ export default function TabNavigation() {
                 tabBarLabel:({color})=>(
                     <Text style={{fontSize: 16, marginBottom: 3, marginTop: -6}}>Home</Text>
                 ),
+                headerShown: null,
                 tabBarIcon:(color, size)=>(
                     <Ionicons name="home" size={20} color="#2a9d8f" />
                 )
