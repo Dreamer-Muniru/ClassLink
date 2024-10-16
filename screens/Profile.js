@@ -3,6 +3,8 @@ import { View, Text, StyleSheet, TouchableOpacity, Alert, Image, ActivityIndicat
 import { auth } from '../firebase/firebaseConfig';
 import { signOut } from 'firebase/auth';
 import { getFirestore, query, where, getDocs, collection } from 'firebase/firestore';
+import Feather from '@expo/vector-icons/Feather';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 const Profile = ({ navigation }) => {
   const [userInfo, setUserInfo] = useState(null);
@@ -83,21 +85,23 @@ const Profile = ({ navigation }) => {
                   <Image source={{ uri: userInfo.image }} style={styles.profileImage} className="mt-[-50px] mb-2" />
                   <Text style={styles.header}>{userInfo.fullName}</Text>
                   <View className="flex-1 flex-row">
-                    <TouchableOpacity className="w-[100px] h-[40px] bg-[#2a9d8f] ml-8 rounded-lg">
-                      <Text style={styles.info}>{userInfo.phoneNumber}</Text>
+                    <TouchableOpacity className="w-[110px] h-[50px] bg-[#2a9d8f] ml-8 rounded-lg">
+                      
+                      <Text className="text-[15px] pt-2" > <Feather name="phone-call" size={16} color="#fff" />{userInfo.phoneNumber}</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity className="w-[100px] h-[40px] bg-[#2a9d8f] ml-10 rounded-lg">
-                      <Text style={styles.info}>{userInfo.address}</Text>
+                    <TouchableOpacity className="w-[150px] h-[50px] bg-[#2a9d8f] ml-10 rounded-lg">
+                      <Text ><Ionicons name="location" size={18} color="#fff" />{userInfo.address}</Text>
                     </TouchableOpacity>
                     
                   </View>
                 </View>  
              </View>
             </View>
-            <View className="mt-10">
-                <Text >Specilization:{userInfo.specialization}</Text>
-                <Text  className="">Qualification: {userInfo.qualification}</Text>
-                <Text >Experience: {userInfo.experience} years</Text>
+            <View className="mt-[50px] bg-[#fff]">
+                <Text className="ml-5 mb-5 pt-2 text-[22px] font-bold text-[#2a9d8f]">Other Information</Text>
+                <Text className="text-center mb-3 bg-[#c7ece8] pb-3 text-[22px]" >Specilization: {userInfo.specialization}</Text>
+                <Text  className="text-center mb-3 bg-[#c7ece8] pb-3 text-[22px]">Qualification: {userInfo.qualification}</Text>
+                <Text className="text-center mb-5 bg-[#c7ece8] text-[22px]" >Experience: {userInfo.experience} years</Text>
 
             </View>
               
@@ -115,7 +119,7 @@ const Profile = ({ navigation }) => {
         <Text style={styles.info}>No user information available.</Text>
       )}
 
-      <TouchableOpacity className="w-[140px] mb-[140px] bg-[#2a9d8f] h-[50px] rounded-md ml-[120px] mt-[100px]"  onPress={handleLogout}>
+      <TouchableOpacity className="w-[140px] mb-[140px] bg-[#2a9d8f] h-[50px] rounded-md ml-[120px] mt-[50px]"  onPress={handleLogout}>
         <Text className="text-center pt-2 text-[#fff] font-bold text-[22px]" >Logout</Text>
       </TouchableOpacity>
     </View>
