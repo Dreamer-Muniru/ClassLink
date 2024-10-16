@@ -95,9 +95,9 @@ const Profile = ({ navigation }) => {
              </View>
             </View>
             <View className="mt-10">
-                <Text style={styles.info}>Specilization:{userInfo.specialization}</Text>
-                <Text style={styles.info} className="">Qualification: {userInfo.qualification}</Text>
-                <Text style={styles.info}>Experience: {userInfo.experience} years</Text>
+                <Text >Specilization:{userInfo.specialization}</Text>
+                <Text  className="">Qualification: {userInfo.qualification}</Text>
+                <Text >Experience: {userInfo.experience} years</Text>
 
             </View>
               
@@ -115,8 +115,8 @@ const Profile = ({ navigation }) => {
         <Text style={styles.info}>No user information available.</Text>
       )}
 
-      <TouchableOpacity style={styles.button} onPress={handleLogout}>
-        <Text style={styles.buttonText}>Logout</Text>
+      <TouchableOpacity className="w-[140px] mb-[140px] bg-[#2a9d8f] h-[50px] rounded-md ml-[120px] mt-[100px]"  onPress={handleLogout}>
+        <Text className="text-center pt-2 text-[#fff] font-bold text-[22px]" >Logout</Text>
       </TouchableOpacity>
     </View>
   );
@@ -141,17 +141,17 @@ const styles = StyleSheet.create({
   
     fontweight: 'bold'
   },
-  button: {
-    backgroundColor: '#007bff',
-    padding: 15,
-    borderRadius: 5,
-    alignItems: 'center',
-    marginTop: 20,
-  },
-  buttonText: {
-    color: '#fff',
-    fontSize: 18,
-  },
+  // button: {
+  //   backgroundColor: '#007bff',
+  //   padding: 15,
+  //   borderRadius: 5,
+  //   alignItems: 'center',
+  //   marginTop: 20,
+  // },
+  // buttonText: {
+  //   color: '#fff',
+  //   fontSize: 18,
+  // },
   profileImage: {
     width: 120,
     height: 120,
