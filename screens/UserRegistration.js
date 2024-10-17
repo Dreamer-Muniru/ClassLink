@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, ActivityIndicator, Alert, ScrollView, StyleSheet, Image } from 'react-native';
 import { app } from '../firebase/firebaseConfig';
-import { collection, addDoc, getFirestore } from 'firebase/firestore';
+import { collection, addDoc, getFirestore, serverTimestamp } from 'firebase/firestore'; // Added serverTimestamp
 import { getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'; 
 import { Formik } from 'formik';
@@ -31,7 +31,6 @@ export default function UserRegistration({ navigation }) {
 
     const onSubmitMethod = async (values) => {
         setLoading(true);
-
         const auth = getAuth(app);
 
         try {
@@ -51,7 +50,8 @@ export default function UserRegistration({ navigation }) {
                 await addDoc(collection(db, "teachers"), { 
                     ...values, 
                     role, 
-                    uid: user.uid 
+                    uid: user.uid,
+                    createdAt: serverTimestamp()  // Add createdAt timestamp here
                 });
             }
 
@@ -61,7 +61,8 @@ export default function UserRegistration({ navigation }) {
                     fullName: values.fullName,  
                     phoneNumber: values.phoneNumber,
                     role, 
-                    uid: user.uid 
+                    uid: user.uid,
+                    createdAt: serverTimestamp()  // Add createdAt timestamp here
                 });
             }
 
@@ -141,7 +142,6 @@ export default function UserRegistration({ navigation }) {
                         />
                         {errors.confirmPassword && <Text style={styles.error}>{errors.confirmPassword}</Text>}
 
-                        {/* Full Name and Phone Number for both students and teachers */}
                         <TextInput
                             style={styles.input}
                             placeholder="Full Name"
@@ -159,7 +159,6 @@ export default function UserRegistration({ navigation }) {
                         />
                         {errors.phoneNumber && <Text style={styles.error}>{errors.phoneNumber}</Text>}
 
-                        {/* Additional fields for teachers */}
                         {role === 'teacher' && (
                             <>
                                 <TouchableOpacity onPress={pickImage}>
@@ -208,6 +207,7 @@ export default function UserRegistration({ navigation }) {
                     </View>
                 )}
             </Formik>
+
             <View>
                 <Text className="text-[22px] text-[#0f4c5c] text-center">Already have an account?</Text>
                 <TouchableOpacity onPress={() => navigation.navigate('UserLogin')} className="mt-5 mb-7">
@@ -217,7 +217,6 @@ export default function UserRegistration({ navigation }) {
         </ScrollView>
     );
 }
-
 
 const styles = StyleSheet.create({
     container: {
@@ -232,7 +231,7 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         fontSize: 17,
     },
-    picker_input:{
+    picker_input: {
         color: '#2a9d8f',
         fontWeight: 'bold',
         marginTop: 10,

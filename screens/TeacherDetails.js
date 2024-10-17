@@ -28,7 +28,7 @@ export default function TeacherDetails({ route }) {
           <Text className="font-bold">Phone Number: </Text>{teacher.phoneNumber}
         </Text>
         <Text className="text-lg text-gray-700">
-          <Text className="font-bold">Specialization: </Text>{teacher.specialization}
+          <Text className="font-bold">Subject: </Text>{teacher.specialization}
         </Text>
         <Text className="text-lg text-gray-700">
           <Text className="font-bold">Qualification: </Text>{teacher.qualification}
