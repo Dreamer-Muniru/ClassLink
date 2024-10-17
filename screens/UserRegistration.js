@@ -58,8 +58,8 @@ export default function UserRegistration({ navigation }) {
             if (role === 'student') {
                 await addDoc(collection(db, "students"), { 
                     email: values.email, 
-                    fullName: values.fullName,  // Include full name
-                    phoneNumber: values.phoneNumber,  // Include phone number
+                    fullName: values.fullName,  
+                    phoneNumber: values.phoneNumber,
                     role, 
                     uid: user.uid 
                 });
