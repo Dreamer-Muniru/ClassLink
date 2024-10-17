@@ -16,7 +16,6 @@ export default function UserRegistration({ navigation }) {
     const db = getFirestore(app);
     const storage = getStorage();
 
-    // Image picking method for teacher
     const pickImage = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({
             mediaTypes: ImagePicker.MediaTypeOptions.All,
@@ -30,21 +29,17 @@ export default function UserRegistration({ navigation }) {
         }
     };
 
-    
     const onSubmitMethod = async (values) => {
         setLoading(true);
 
         const auth = getAuth(app);
 
         try {
-            // Creating user in Firebase Authentication using email and password
             const userCredential = await createUserWithEmailAndPassword(auth, values.email, values.password);
             const user = userCredential.user;
 
-          
             if (role === 'teacher') {
                 if (image) {
-                    // Upload image to Firebase Storage for teachers
                     const resp = await fetch(image);
                     const blob = await resp.blob();
                     const storageRef = ref(storage, 'teacherProfiles/' + Date.now() + ".jpg");
@@ -53,7 +48,6 @@ export default function UserRegistration({ navigation }) {
                     values.image = await getDownloadURL(storageRef);
                 }
 
-                // Adding teacher information to Firestore 
                 await addDoc(collection(db, "teachers"), { 
                     ...values, 
                     role, 
@@ -61,10 +55,11 @@ export default function UserRegistration({ navigation }) {
                 });
             }
 
-            // Handle student logic
             if (role === 'student') {
                 await addDoc(collection(db, "students"), { 
                     email: values.email, 
+                    fullName: values.fullName,  // Include full name
+                    phoneNumber: values.phoneNumber,  // Include phone number
                     role, 
                     uid: user.uid 
                 });
@@ -99,15 +94,17 @@ export default function UserRegistration({ navigation }) {
                     if (values.password !== values.confirmPassword) {
                         errors.confirmPassword = 'Passwords do not match';
                     }
-                    if (role === 'teacher' && !values.fullName) {
+                    if (!values.fullName) {
                         errors.fullName = 'Full name is required';
+                    }
+                    if (!values.phoneNumber) {
+                        errors.phoneNumber = 'Phone number is required';
                     }
                     return errors;
                 }}
             >
                 {({ handleChange, handleSubmit, values, errors }) => (
                     <View>
-                        {/* Role Selection */}
                         <Picker
                             selectedValue={role}
                             style={styles.picker_input}
@@ -117,7 +114,6 @@ export default function UserRegistration({ navigation }) {
                             <Picker.Item label="Teacher" value="teacher" />
                         </Picker>
 
-                        {/* Shared Fields (Student/Teacher) */}
                         <TextInput
                             style={styles.input}
                             placeholder="Email Address"
@@ -145,7 +141,25 @@ export default function UserRegistration({ navigation }) {
                         />
                         {errors.confirmPassword && <Text style={styles.error}>{errors.confirmPassword}</Text>}
 
-                        
+                        {/* Full Name and Phone Number for both students and teachers */}
+                        <TextInput
+                            style={styles.input}
+                            placeholder="Full Name"
+                            value={values.fullName}
+                            onChangeText={handleChange('fullName')}
+                        />
+                        {errors.fullName && <Text style={styles.error}>{errors.fullName}</Text>}
+
+                        <TextInput
+                            style={styles.input}
+                            placeholder="Phone Number"
+                            value={values.phoneNumber}
+                            onChangeText={handleChange('phoneNumber')}
+                            keyboardType="phone-pad"
+                        />
+                        {errors.phoneNumber && <Text style={styles.error}>{errors.phoneNumber}</Text>}
+
+                        {/* Additional fields for teachers */}
                         {role === 'teacher' && (
                             <>
                                 <TouchableOpacity onPress={pickImage}>
@@ -156,22 +170,6 @@ export default function UserRegistration({ navigation }) {
                                     )}
                                     <Text>Upload Profile Image</Text>
                                 </TouchableOpacity>
-
-                                <TextInput
-                                    style={styles.input}
-                                    placeholder="Full Name"
-                                    value={values.fullName}
-                                    onChangeText={handleChange('fullName')}
-                                />
-                                {errors.fullName && <Text style={styles.error}>{errors.fullName}</Text>}
-
-                                <TextInput
-                                    style={styles.input}
-                                    placeholder="Phone Number"
-                                    value={values.phoneNumber}
-                                    onChangeText={handleChange('phoneNumber')}
-                                    keyboardType="phone-pad"
-                                />
 
                                 <TextInput
                                     style={styles.input}
@@ -204,7 +202,6 @@ export default function UserRegistration({ navigation }) {
                             </>
                         )}
 
-                        {/* Submit button */}
                         <TouchableOpacity onPress={handleSubmit} style={{ backgroundColor: loading ? '#ccc' : '#e63946' }} disabled={loading} className="p-2 mt-3 mb-10 rounded-full">
                             {loading ? <ActivityIndicator color="green" /> : <Text className="text-center font-bold text-white text-[22px]">Submit</Text>}
                         </TouchableOpacity>
@@ -220,6 +217,7 @@ export default function UserRegistration({ navigation }) {
         </ScrollView>
     );
 }
+
 
 const styles = StyleSheet.create({
     container: {
