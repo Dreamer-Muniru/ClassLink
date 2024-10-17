@@ -3,7 +3,8 @@ import React from 'react';
 import { Linking } from 'react-native';
 
 export default function TeacherDetails({ route }) {
-  const { teacher } = route.params;
+  const { teacher } = route.params || {}
+  
 
   const handleBookPress = () => {
     // Open the phone dialer with the teacher's phone number
@@ -24,9 +25,9 @@ export default function TeacherDetails({ route }) {
       </View>
 
       <View className="bg-white rounded-lg shadow-lg p-6 space-y-4">
-        <Text className="text-lg text-gray-700">
+        {/* <Text className="text-lg text-gray-700">
           <Text className="font-bold">Phone Number: </Text>{teacher.phoneNumber}
-        </Text>
+        </Text> */}
         <Text className="text-lg text-gray-700">
           <Text className="font-bold">Subject: </Text>{teacher.specialization}
         </Text>
