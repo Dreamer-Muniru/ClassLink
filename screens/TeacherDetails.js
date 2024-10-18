@@ -14,7 +14,7 @@ export default function TeacherDetails({ route }) {
 
   return (
     <View className="flex-1 bg-gray-100 p-4">
-      <Text className="text-3xl font-bold text-center text-gray-800 mb-6">Teacher Details</Text>
+      <Text className="text-3xl font-bold text-center text-[#2a9d8f] mb-6">Teacher Details</Text>
       
       <View className="items-center mb-6">
         <Image
@@ -46,7 +46,7 @@ export default function TeacherDetails({ route }) {
       <View className="items-center mt-6">
         <TouchableOpacity
           onPress={handleBookPress}
-          className="bg-[#2a9d8f] w-[150px] py-3 px-6 rounded-full shadow-lg"
+          className="bg-[#e63946] w-[150px] py-3 px-6 rounded-full shadow-lg"
         >
           <Text className="text-lg text-white text-center font-bold">Book</Text>
         </TouchableOpacity>
