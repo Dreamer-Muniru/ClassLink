@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "ClassLink",
-    "slug": "ClassLink",
+    "slug": "classlink",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -18,10 +18,17 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.muniru_dreamer.ClassLink"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "owner": "muniru_dreamer",
+    "extra": {
+      "eas": {
+        "projectId": "751466de-58f6-4a41-8207-3ce0207d53b9"
+      }
     }
   }
 }
