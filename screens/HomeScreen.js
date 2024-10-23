@@ -35,7 +35,7 @@ export default function HomeScreen({navigation}) {
             fetchTeachers();
         }, [])
     );
-
+ 
     const renderItem = ({ item }) => (
         <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('TeacherDetails', { teacher: item })}>
             <Image source={{ uri: item.image }} style={styles.profileImage} />
@@ -67,7 +67,7 @@ export default function HomeScreen({navigation}) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingTop: 40,
+        paddingTop: 45,
         paddingHorizontal: 10,
     },
     header: {
