@@ -20,7 +20,7 @@ const Resources = () => {
         {
           id: '2',
           title: 'Classroom Management for New Teachers',
-          date: '2024-11-05',
+          date: '2024-11-08',
           mode: 'Offline',
         },
         {
