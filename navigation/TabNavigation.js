@@ -19,17 +19,17 @@ export default function TabNavigation() {
         <Tab.Navigator>
            <Tab.Screen name="HomeScreen" component={HomeScreen} 
             options={{
-                tabBarLabel:({color})=>(
+                tabBarLabel:()=>(
                     <Text style={{fontSize: 16, marginBottom: 3, marginTop: -6}}>Home</Text>
                 ),
-                headerShown: null,
-                tabBarIcon:(color, size)=>(
+                // headerShown: null,
+                tabBarIcon:()=>(
                     <Ionicons name="home" size={20} color="#2a9d8f" />
                 )
             }} />
             <Tab.Screen name="Resources" component={Resources}
                 options={{
-                    tabBarLabel:({color})=>(
+                    tabBarLabel:()=>(
                         <Text style={{fontSize: 16, marginBottom: 3, marginTop: -6}}>Resources</Text>
                     ),
                     tabBarIcon:()=>(
@@ -39,7 +39,7 @@ export default function TabNavigation() {
             />
             <Tab.Screen name="Notification" component={Notification}
                options={{
-                    tabBarLabel:({color})=>(
+                    tabBarLabel:()=>(
                         <Text style={{fontSize: 16, marginBottom: 3, marginTop: -6}}>Notification</Text>
                     ),
                     tabBarIcon:()=>(
@@ -50,7 +50,7 @@ export default function TabNavigation() {
             />
             <Tab.Screen name="Profile" component={Profile}
                 options={{
-                    tabBarLabel:({color})=>(
+                    tabBarLabel:()=>(
                         <Text style={{fontSize: 16, marginBottom: 3, marginTop: -6}}>Profile</Text>
                     ),
                     tabBarIcon:()=>(
@@ -63,3 +63,4 @@ export default function TabNavigation() {
     
   )
 }
+
