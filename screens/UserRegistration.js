@@ -165,9 +165,9 @@ export default function UserRegistration({ navigation }) {
                                     {image ? (
                                         <Image source={{ uri: image }} style={{ width: 100, height: 100, borderRadius: 10 }} />
                                     ) : (
-                                        <Image source={require('../assets/icon.png')} style={{ width: 100, height: 100, borderRadius: 10 }} />
+                                        <Image source={require('../assets/adaptive-icon.png')} style={{ width: 100, height: 100, borderRadius: 10 }} />
                                     )}
-                                    <Text>Upload Profile Image</Text>
+                                    <Text className="mt-[-10px] mb-[20px]">Upload Profile Image</Text>
                                 </TouchableOpacity>
 
                                 <TextInput
