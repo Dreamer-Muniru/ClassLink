@@ -24,7 +24,7 @@ export default function TeacherDetails({ route }) {
         <Text className="text-2xl font-semibold text-gray-900">{teacher.fullName}</Text>
         <View>
           <Text className="text-[18px] text-[#2a9d8f] font-bold">About</Text>
-          <Text>{teacher.about}</Text>
+          <Text className="text-[16px]">{teacher.about}</Text>
         </View>
       </View>
 

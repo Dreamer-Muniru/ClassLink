@@ -96,15 +96,16 @@ const Profile = ({ navigation }) => {
   }
 
   return (
-    <View >
+    <ScrollView >
       {userInfo ? (
         <>
           {/* Profile Information */}
           <View className="bg-[#2a9d8f] h-[200px] w-full rounded-bl-[20px] rounded-br-[20px] mb-10">
               <View className="w-[100px] h-[100px] rounded-full mt-[70px]">
-                <View className="bg-[#fff] w-[350px] ml-[20px] h-[200px] rounded-2xl">
+                <View className="bg-[#fff] w-[350px] ml-[20px] h-[250px] rounded-2xl">
                   <Image source={{ uri: userInfo.image }} style={styles.profileImage} className="mt-[-50px] mb-2" />
                   <Text style={styles.header}>{userInfo.fullName}</Text>
+                  <Text className="w-[350px] mb-1 pl-4 ">{userInfo.about}</Text>
                   <View className="flex-1 flex-row">
                     <View className="w-[110px] h-[50px] bg-[#2a9d8f] ml-8 rounded-lg">
                       <Text className="text-[15px] pt-2"> <Feather name="phone-call" size={16} color="#fff" />{userInfo.phoneNumber}</Text>
@@ -130,6 +131,9 @@ const Profile = ({ navigation }) => {
                 <Text className="text-center mb-3 bg-[#c7ece8] pb-3 text-[22px]">Specialization: {userInfo.specialization}</Text>
                 <Text className="text-center mb-3 bg-[#c7ece8] pb-3 text-[22px]">Qualification: {userInfo.qualification}</Text>
                 <Text className="text-center mb-5 bg-[#c7ece8] text-[22px]">Experience: {userInfo.experience} years</Text>
+                <Text className="text-center mb-5 bg-[#c7ece8] text-[22px]">Location of Lesson: {userInfo.location}</Text>
+                <Text className="text-center mb-5 bg-[#c7ece8] text-[22px]">Rate Per Month: {userInfo.rate} GHS</Text>
+                <Text className="text-center mb-5 bg-[#c7ece8] text-[22px]">Availability: {userInfo.availability}</Text>
               </View>
             )}
 
@@ -193,7 +197,7 @@ const Profile = ({ navigation }) => {
       <TouchableOpacity className="w-[140px] mb-[50px] bg-[#e63946] h-[50px] rounded-md ml-[120px] mt-[50px]" onPress={handleLogout}>
         <Text className="text-center pt-2 text-[#fff] font-bold text-[22px]">Logout</Text>
       </TouchableOpacity>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -208,13 +212,13 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     textAlign: 'center',
-    marginBottom: 20,
+    marginBottom: 5,
   },
   editButton: {
     width: 120,
     marginLeft: 240,
-    marginTop: 30,
-    marginBottom: -30,
+    marginTop: 100,
+    marginBottom: -20,
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#e63946',
