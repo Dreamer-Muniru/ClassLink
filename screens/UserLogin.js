@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, ActivityIndicator, Alert } from 'react-native';
+import { View, Text, TextInput, Image, TouchableOpacity, StyleSheet, ActivityIndicator, Alert } from 'react-native';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase/firebaseConfig';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -39,6 +39,7 @@ export default function UserLogin({navigation}) {
 
   return (
     <View style={styles.container}>
+      <Image source={require("../assets/icon.png")} style={{width: 120, height: 140, borderRadius: 10}} />
       <Text style={styles.header}>Login</Text>
 
       <TextInput
