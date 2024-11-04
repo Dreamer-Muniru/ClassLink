@@ -77,6 +77,7 @@ export default function UserRegistration({ navigation }) {
 
     return (
         <ScrollView style={styles.container}>
+       
             <Text style={styles.title}>Register as a {role === 'teacher' ? 'Teacher' : 'Student'}</Text>
 
             <Formik
@@ -192,6 +193,12 @@ export default function UserRegistration({ navigation }) {
                     </View>
                 )}
             </Formik>
+            <View className="mt-8">
+                <Text className="text-[22px] text-[#0f4c5c] text-center">Have an account already??</Text>
+                <TouchableOpacity className="mt-8 justify-items-center" onPress={() => navigation.navigate("UserLogin")}>
+                <Text className="text-[22px] text-center bg-[#2a9d8f] text-white w-[150px] p-3 ml-[100px] rounded-md ">Login</Text>
+                </TouchableOpacity>
+            </View>
         </ScrollView>
     );
 }
@@ -205,7 +212,9 @@ const styles = StyleSheet.create({
         color: '#2a9d8f', 
         fontWeight: 'bold', 
         textAlign: 'center', 
-        marginVertical: 20 
+        marginVertical: 20,
+        marginTop: 40, 
+    
     },
     input: { 
         borderWidth: 1, 

@@ -39,7 +39,7 @@ export default function UserLogin({navigation}) {
 
   return (
     <View style={styles.container}>
-      <Image source={require("../assets/icon.png")} style={{width: 120, height: 140, borderRadius: 10}} />
+      <Image source={require("../assets/icon.png")} className="w-[140px] h-[140px] ml-[100px] rounded-full mb-4" />
       <Text style={styles.header}>Login</Text>
 
       <TextInput
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
     fontSize: 40,
     color: '#2a9d8f',
     textAlign: 'center',
-    marginBottom: 20,
+    marginBottom: 40,
     fontWeight: 'bold',
   },
   input: {
