@@ -180,6 +180,24 @@ const Profile = ({ navigation }) => {
                         value={editData.experience}
                         onChangeText={(value) => handleEditChange('experience', value)}
                       />
+                      <TextInput
+                        style={styles.input}
+                        placeholder="Rate per Month"
+                        value={editData.rate}
+                        onChangeText={(value) => handleEditChange('rate', value)}
+                      />
+                      <TextInput
+                        style={styles.input}
+                        placeholder="Availability"
+                        value={editData.availability}
+                        onChangeText={(value) => handleEditChange('availability', value)}
+                      />
+                       <TextInput
+                        style={styles.input}
+                        placeholder="About"
+                        value={editData.about}
+                        onChangeText={(value) => handleEditChange('about', value)}
+                      />
                     </>
                   )}
                   <TouchableOpacity style={styles.saveButton} onPress={saveChanges}>
