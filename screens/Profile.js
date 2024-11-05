@@ -6,6 +6,9 @@ import { getFirestore, query, where, getDocs, collection, updateDoc, doc } from 
 import * as ImagePicker from 'expo-image-picker'; // Import image picker
 import Feather from '@expo/vector-icons/Feather';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
 
 const Profile = ({ navigation }) => {
   const [userInfo, setUserInfo] = useState(null);
@@ -128,12 +131,55 @@ const Profile = ({ navigation }) => {
             {userInfo.role === 'teacher' && (
               <View className="mt-[50px] bg-[#fff]">
                 <Text className="ml-5 mb-5 pt-2 text-[22px] font-bold text-[#2a9d8f]">Other Information</Text>
-                <Text className="text-center mb-3 bg-[#c7ece8] pb-3 text-[22px]">Specialization: {userInfo.specialization}</Text>
-                <Text className="text-center mb-3 bg-[#c7ece8] pb-3 text-[22px]">Qualification: {userInfo.qualification}</Text>
-                <Text className="text-center mb-5 bg-[#c7ece8] text-[22px]">Experience: {userInfo.experience} years</Text>
-                <Text className="text-center mb-5 bg-[#c7ece8] text-[22px]">Location of Lesson: {userInfo.location}</Text>
-                <Text className="text-center mb-5 bg-[#c7ece8] text-[22px]">Rate Per Month: {userInfo.rate} GHS</Text>
-                <Text className="text-center mb-5 bg-[#c7ece8] text-[22px]">Availability: {userInfo.availability}</Text>
+                {/* Speicialiation */}
+                <View className="flex-row pl-3" style={styles.profile_List}>
+                  <MaterialIcons name="fmd-good" size={30} color="#2a9d8f" />
+                  <View>
+                    <Text className="text-center text-[22px] mb-1 font-bold ">Specialization</Text>
+                    <Text className="text-[18px] mt-[-5px] pl-[5px]">{userInfo.specialization}</Text>
+                  </View>
+                </View>
+                {/* Qualification */}
+                 <View className="flex-row pl-3" style={styles.profile_List}>
+                  <FontAwesome5 name="user-graduate" size={30} color="#2a9d8f" />
+                  <View className="ml-1">
+                    <Text className="text-center text-[22px] mb-1 font-bold ">Qualification</Text>
+                    <Text className="text-[18px] mt-[-5px] pl-[5px]">{userInfo.qualification}</Text>
+                  </View>
+                </View>
+                {/* Years of Experience */}
+                <View className="flex-row pl-3" style={styles.profile_List}>
+                  <MaterialIcons name="group-work" size={30} color="#2a9d8f" />
+                  <View>
+                    <Text className="text-center text-[22px] mb-1 font-bold ">Years of Experience</Text>
+                    <Text className="text-[18px] mt-[-5px] pl-[5px]">{userInfo.experience} Years</Text>
+                  </View>
+                </View>
+               {/* Rate per Month */}
+               <View className="flex-row pl-3" style={styles.profile_List}>
+                  <FontAwesome name="money" size={30} color="#2a9d8f" />
+                  <View>
+                    <Text className="text-center text-[22px] mb-1 font-bold ">Rate per month</Text>
+                    <Text className="text-[18px] mt-[-5px] pl-[5px]">{userInfo.rate} GHS</Text>
+                  </View>
+                </View>
+                {/* Location */}
+                <View className="flex-row pl-3" style={styles.profile_List}>
+                  <MaterialIcons name="fmd-good" size={30} color="#2a9d8f" />
+                  <View>
+                    <Text className="text-center text-[22px] mb-1 font-bold ">Location</Text>
+                    <Text className="text-[18px] mt-[-5px] pl-[5px]">{userInfo.location}</Text>
+                  </View>
+                </View>
+                {/* Availability */}
+                <View className="flex-row pl-3" style={styles.profile_List}>
+                  <MaterialIcons name="fmd-good" size={30} color="#2a9d8f" />
+                  <View>
+                    <Text className="text-center text-[22px] mb-1 font-bold ">Availability</Text>
+                    <Text className="text-[18px] mt-[-5px] pl-[5px]">{userInfo.availability} Years</Text>
+                  </View>
+                </View>
+      
               </View>
             )}
 
@@ -271,6 +317,12 @@ const styles = StyleSheet.create({
     padding: 20,
     borderRadius: 10,
     width: '90%',
+  },
+  profile_List:{
+    borderWidth: 1,
+    borderColor: '#ddd',
+    backgroundColor: '#fff',
+   
   },
   modalHeader: {
     fontSize: 24,
