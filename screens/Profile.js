@@ -9,6 +9,8 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
+import AntDesign from '@expo/vector-icons/AntDesign';
+import Entypo from '@expo/vector-icons/Entypo';
 
 const Profile = ({ navigation }) => {
   const [userInfo, setUserInfo] = useState(null);
@@ -133,50 +135,64 @@ const Profile = ({ navigation }) => {
                 <Text className="ml-5 mb-5 pt-2 text-[22px] font-bold text-[#2a9d8f]">Other Information</Text>
                 {/* Speicialiation */}
                 <View className="flex-row pl-3" style={styles.profile_List}>
-                  <MaterialIcons name="fmd-good" size={30} color="#2a9d8f" />
-                  <View>
+                  <View className="mt-1">
+                    <AntDesign name="export2" size={50} color="#2a9d8f" />
+                    
+                  </View>
+                  <View className="pl-2">
                     <Text className="text-center text-[22px] mb-1 font-bold ">Specialization</Text>
-                    <Text className="text-[18px] mt-[-5px] pl-[5px]">{userInfo.specialization}</Text>
+                    <Text className="text-[18px] text-[#686262] mt-[-5px] pb-2 pl-[5px]">{userInfo.specialization}</Text>
                   </View>
                 </View>
                 {/* Qualification */}
-                 <View className="flex-row pl-3" style={styles.profile_List}>
-                  <FontAwesome5 name="user-graduate" size={30} color="#2a9d8f" />
-                  <View className="ml-1">
-                    <Text className="text-center text-[22px] mb-1 font-bold ">Qualification</Text>
-                    <Text className="text-[18px] mt-[-5px] pl-[5px]">{userInfo.qualification}</Text>
+                 <View className="flex-row" style={styles.profile_List}>
+                  <View className="mt-2 ml-5">
+                    <FontAwesome5 name="user-graduate" size={40} color="#2a9d8f" />
+                  </View>
+                  <View className="pl-3">
+                    <Text className="text-center text-[22px] ml-[-80px] font-bold ">Qualification</Text>
+                    <Text className="text-[18px] text-[#686262] mt-[-5px] pb-2 pl-[5px]">{userInfo.qualification}</Text>
                   </View>
                 </View>
                 {/* Years of Experience */}
                 <View className="flex-row pl-3" style={styles.profile_List}>
-                  <MaterialIcons name="group-work" size={30} color="#2a9d8f" />
-                  <View>
+                  <View className="mt-1">
+                    <MaterialIcons name="group-work" size={50} color="#2a9d8f" />
+                  </View>
+
+                  <View className="ml-2">
                     <Text className="text-center text-[22px] mb-1 font-bold ">Years of Experience</Text>
-                    <Text className="text-[18px] mt-[-5px] pl-[5px]">{userInfo.experience} Years</Text>
+                    <Text className="text-[18px] text-[#686262] pb-2 mt-[-5px] pl-[5px]">{userInfo.experience} Years</Text>
                   </View>
                 </View>
                {/* Rate per Month */}
                <View className="flex-row pl-3" style={styles.profile_List}>
-                  <FontAwesome name="money" size={30} color="#2a9d8f" />
-                  <View>
+                  <View className="ml-1 mt-1">
+                    <FontAwesome name="money" size={45} color="#2a9d8f" />
+                  </View>
+                  <View className="ml-3">
                     <Text className="text-center text-[22px] mb-1 font-bold ">Rate per month</Text>
-                    <Text className="text-[18px] mt-[-5px] pl-[5px]">{userInfo.rate} GHS</Text>
+                    <Text className="text-[18px] text-[#686262] pb-2 mt-[-5px] pl-[5px]">{userInfo.rate} GHS</Text>
                   </View>
                 </View>
                 {/* Location */}
                 <View className="flex-row pl-3" style={styles.profile_List}>
-                  <MaterialIcons name="fmd-good" size={30} color="#2a9d8f" />
-                  <View>
+                  <View className="">
+                    <MaterialIcons name="fmd-good" size={50} color="#2a9d8f" />
+                  </View>
+                  <View className="ml-3">
                     <Text className="text-center text-[22px] mb-1 font-bold ">Location</Text>
-                    <Text className="text-[18px] mt-[-5px] pl-[5px]">{userInfo.location}</Text>
+                    <Text className="text-[18px] text-[#686262] pb-2 mt-[-5px] pl-[5px]">{userInfo.location}</Text>
                   </View>
                 </View>
                 {/* Availability */}
                 <View className="flex-row pl-3" style={styles.profile_List}>
-                  <MaterialIcons name="fmd-good" size={30} color="#2a9d8f" />
-                  <View>
-                    <Text className="text-center text-[22px] mb-1 font-bold ">Availability</Text>
-                    <Text className="text-[18px] mt-[-5px] pl-[5px]">{userInfo.availability} Years</Text>
+                  <View className="ml-1 mt-1">
+                    <Entypo name="compass" size={45} color="#2a9d8f" />
+                  </View>
+                  <View className="ml-3">
+                    <Text className="text-center text-[22px] ml-[-40px] mb-1 font-bold ">Availability</Text>
+                    <Text className="text-[18px] text-[#686262] pb-2 mt-[-5px] pl-[5px]">{userInfo.availability}</Text>
                   </View>
                 </View>
       
