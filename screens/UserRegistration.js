@@ -169,7 +169,7 @@ export default function UserRegistration({ navigation }) {
                                     <Picker selectedValue={values.availability} style={styles.picker_input} onValueChange={handleChange('availability')}>
                                         <Picker.Item label="Select Availability" value="" />
                                         <Picker.Item label="Monday to Friday" value="Monday to Friday" />
-                                        <Picker.Item label="Saturday to Sunday" value="Saturday to Sunday" />
+                                        <Picker.Item label="Saturday & Sunday" value="Saturday & Sunday" />
                                     </Picker>
                                 </View>
 

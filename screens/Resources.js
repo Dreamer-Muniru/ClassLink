@@ -1,97 +1,89 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, FlatList, StyleSheet, ActivityIndicator } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, ActivityIndicator, FlatList } from 'react-native';
+import axios from 'axios';
 
+export default function Resources() {
+    const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [textInput, setTextInput] = useState('');
+    const apiKey = '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';
+    const apiUrl = 'https://api.openai.com/v1/chat/completions';
 
-const Resources = () => {
-  const [workshops, setWorkshops] = useState([]);
-  const [loading, setLoading] = useState(true);
+    const handleSend = async () => {
+        if (!textInput.trim()) return; 
+        setLoading(true);
 
- 
-  const fetchWorkshops = async () => {
-  
-    setTimeout(() => {
-      const data = [
-        {
-          id: '1',
-          title: 'Effective Online Teaching Strategies',
-          date: '2024-10-20',
-          mode: 'Online',
-        },
-        {
-          id: '2',
-          title: 'Classroom Management for New Teachers',
-          date: '2024-11-08',
-          mode: 'Offline',
-        },
-        {
-          id: '3',
-          title: 'Using Tech Tools for Better Learning',
-          date: '2024-11-15',
-          mode: 'Online',
-        },
-      ];
-      setWorkshops(data);
-      setLoading(false);
-    }, 2000);
-  };
+        try {
+            const response = await axios.post(apiUrl, {
+                model: "gpt-3.5-turbo",
+                messages: [{ role: "user", content: textInput }],
+                max_tokens: 1024,
+                temperature: 0.5
+            }, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${apiKey}`
+                }
+            });
 
-  useEffect(() => {
-    fetchWorkshops();
-  }, []);
+            const text = response.data.choices[0].message.content;
+            setData([...data, { type: 'user', text: textInput }, { type: 'bot', text }]);
+            setTextInput('');
+        } catch (error) {
+            console.error("Request failed:", error);
+            alert("An error occurred while processing your request.");
+        } finally {
+            setLoading(false);
+        }
+    };
 
-  const renderWorkshopItem = ({ item }) => (
-    <View style={styles.card}>
-      <View style={styles.cardContent}>
-        <Text style={styles.title}>{item.title}</Text>
-        <Text style={styles.date}>Date: {item.date}</Text>
-        <Text style={styles.mode}>Mode: {item.mode}</Text>
-      </View>
-    </View>
-  );
+    return (
+        <View style={styles.container}>
+            <FlatList
+                data={data}
+                keyExtractor={(item, index) => index.toString()}
+                style={styles.body}
+                renderItem={({ item }) => (
+                    <View style={{ flexDirection: 'row', padding: 10 }}>
+                        <Text style={{ fontWeight: 'bold', color: item.type === 'user' ? 'green' : 'red' }}>
+                            {item.type === 'user' ? 'Dreamer' : 'Bot'}
+                        </Text>
+                        <Text style={styles.bot}>{item.text}</Text>
+                    </View>
+                )}
+            />
 
-  return (
-    <View style={styles.container}>
-      {loading ? (
-        <ActivityIndicator size="large" color="#0000ff" />
-      ) : (
-        <FlatList
-          data={workshops}
-          renderItem={renderWorkshopItem}
-          keyExtractor={(item) => item.id}
-          ListEmptyComponent={<Text>No upcoming workshops or webinars</Text>}
-        />
-      )}
-    </View>
-  );
-};
+            {loading && <ActivityIndicator size="large" color="#2a9d8f" />}
+
+            <View style={styles.inputContainer}>
+                <TextInput
+                    style={styles.input}
+                    placeholder="Ask me anything..."
+                    value={textInput}
+                    onChangeText={setTextInput}
+                />
+                <TouchableOpacity onPress={handleSend} style={styles.sendButton}>
+                    <Text style={styles.sendButtonText}>Send</Text>
+                </TouchableOpacity>
+            </View>
+        </View>
+    );
+}
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 10,
-    backgroundColor: '#fff',
-  },
-  card: {
-    marginBottom: 10,
-    padding: 10,
-    backgroundColor: '#f8f8f8',
-  },
-  cardContent: {
-    padding: 10,
-  },
-  title: {
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  date: {
-    fontSize: 14,
-    marginTop: 5,
-  },
-  mode: {
-    fontSize: 14,
-    marginTop: 5,
-    fontStyle: 'italic',
-  },
+    body: { backgroundColor: '#fffcc9', width: '100%', margin: 10 },
+    bot: { fontSize: 16, marginLeft: 10 },
+    input: {
+        borderWidth: 1,
+        borderColor: '#000',
+        width: '90%',
+        height: 40,
+        marginBottom: 10,
+        borderRadius: 10,
+        paddingHorizontal: 10,
+    },
+    container: { flex: 1, backgroundColor: '#f5f5f5', padding: 10 },
+    inputContainer: { flexDirection: 'row', alignItems: 'center', backgroundColor: '#fff' },
+    sendButton: { backgroundColor: '#2a9d8f', padding: 10, borderRadius: 20, marginLeft: 10 },
+    sendButtonText: { color: '#fff', fontSize: 16 },
 });
-
-export default Resources;
