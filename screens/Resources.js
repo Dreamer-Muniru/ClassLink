@@ -6,7 +6,7 @@ export default function Resources() {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
     const [textInput, setTextInput] = useState('');
-    const apiKey = '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';
+    const apiKey = ''
     const apiUrl = 'https://api.openai.com/v1/chat/completions';
 
     const handleSend = async () => {
