@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'white',
     padding: 10,
-    borderRadius: 8,
+    borderRadius: 7,
     marginBottom: 10,
   },
   profileImage: {
