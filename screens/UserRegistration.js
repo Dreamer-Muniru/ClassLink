@@ -193,7 +193,7 @@ export default function UserRegistration({ navigation }) {
                     </View>
                 )}
             </Formik>
-            <View className="mt-8">
+            <View className="mt-8 mb-8">
                 <Text className="text-[22px] text-[#0f4c5c] text-center">Have an account already?</Text>
                 <TouchableOpacity className="mt-8 justify-items-center" onPress={() => navigation.navigate("UserLogin")}>
                 <Text className="text-[22px] text-center bg-[#2a9d8f] text-white w-[150px] p-3 ml-[100px] rounded-md ">Login</Text>
