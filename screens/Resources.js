@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, ScrollView, StyleSheet, ActivityIndicator } from 'react-native';
 import axios from 'axios';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
+
 
 export default function Resources() {
     const [userInput, setUserInput] = useState('');

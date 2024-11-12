@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { View, Text, FlatList, Image, StyleSheet, ActivityIndicator, TouchableOpacity } from 'react-native';
+import { View, Text, FlatList, ScrollView, Image, TextInput, StyleSheet, ActivityIndicator, TouchableOpacity } from 'react-native';
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
 import { app } from '../firebase/firebaseConfig';
 import { useFocusEffect } from '@react-navigation/native';
@@ -46,7 +46,14 @@ export default function HomeScreen({navigation}) {
     );
 
     return (
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
+             <TextInput
+                style={styles.input}
+                placeholder="Search for teacher by Subject"
+                keyboardType="email-address"
+                
+                autoCapitalize="none"
+            />
             <Text style={styles.header}>Our Teachers</Text>
             {loading ? (
                 <ActivityIndicator size="large" color="blue" />
@@ -60,21 +67,21 @@ export default function HomeScreen({navigation}) {
                     contentContainerStyle={styles.listContainer}
                 />
             )}
-        </View>
+        </ScrollView>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingTop: 40,
+        paddingTop: 10,
         paddingHorizontal: 10,
     },
     header: {
         fontSize: 24,
         fontWeight: 'bold',
         textAlign: 'center',
-        marginBottom: 20,
+        marginBottom: 10,
     },
     listContainer: {
         paddingBottom: 20,
@@ -115,4 +122,12 @@ const styles = StyleSheet.create({
         color: '#666',
         marginTop: 5,
     },
+    // Search field
+    input: {
+    borderWidth: 1,
+    borderColor: '#2a9d8f',
+    borderRadius: 5,
+    padding: 10,
+    marginBottom: 15,
+  },
 });
