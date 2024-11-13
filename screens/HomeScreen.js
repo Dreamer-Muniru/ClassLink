@@ -124,10 +124,16 @@ const styles = StyleSheet.create({
     },
     // Search field
     input: {
-    borderWidth: 1,
-    borderColor: '#2a9d8f',
+    
+    borderColor: 'lightgray',
     borderRadius: 5,
     padding: 10,
     marginBottom: 15,
+    backgroundColor: '#fff',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 1,
+    elevation: 5,
   },
 });
