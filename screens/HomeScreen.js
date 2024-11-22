@@ -124,16 +124,15 @@ const styles = StyleSheet.create({
     },
     // Search field
     input: {
-    
     borderColor: 'lightgray',
     borderRadius: 5,
     padding: 10,
     marginBottom: 15,
-    backgroundColor: '#fff',
+    backgroundColor: 'white',
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: { width: 3, height: 2 },
     shadowOpacity: 0.3,
     shadowRadius: 1,
-    elevation: 5,
+    elevation: 22,
   },
 });
