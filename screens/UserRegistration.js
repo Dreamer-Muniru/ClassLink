@@ -212,7 +212,7 @@ const styles = StyleSheet.create({
         color: '#2a9d8f', 
         fontWeight: 'bold', 
         textAlign: 'center', 
-        marginVertical: 20,
+        marginVertical: 22,
         marginTop: 40, 
     
     },
