@@ -70,6 +70,7 @@ export default function UserLogin({navigation}) {
           <Text className="text-[22px] text-center bg-[#2a9d8f] text-white w-[150px] p-3 ml-[100px] rounded-md ">Register</Text>
         </TouchableOpacity>
       </View>
+  
     </View>
     
     
@@ -86,7 +87,7 @@ const styles = StyleSheet.create({
     fontSize: 40,
     color: '#2a9d8f',
     textAlign: 'center',
-    marginBottom: 40,
+    marginBottom: 42,
     fontWeight: 'bold',
   },
   input: {
