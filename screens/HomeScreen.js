@@ -115,10 +115,10 @@ const styles = StyleSheet.create({
     specialization: {
         fontSize: 14,
         color: '#888',
-        marginTop: 5,
+        marginTop: 3,
     },
     qualification: {
-        fontSize: 12,
+        fontSize: 14,
         color: '#666',
         marginTop: 5,
     },
