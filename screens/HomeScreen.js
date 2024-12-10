@@ -1,14 +1,11 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, ScrollView, Image, TextInput, StyleSheet, ActivityIndicator, TouchableOpacity } from 'react-native';
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
 import { app } from '../firebase/firebaseConfig';
-import { useFocusEffect } from '@react-navigation/native';
-import { useNavigation } from '@react-navigation/native';
 
-export default function HomeScreen({navigation}) {
+export default function HomeScreen({ navigation }) {
     const [teachers, setTeachers] = useState([]);
     const [loading, setLoading] = useState(true);
-    // const navigation = useNavigation(); // Use navigation
 
     const db = getFirestore(app);
 
@@ -29,13 +26,11 @@ export default function HomeScreen({navigation}) {
         }
     };
 
-    // Reload data when the HomeScreen is focused
-    useFocusEffect(
-        useCallback(() => {
-            fetchTeachers();
-        }, [])
-    );
- 
+    // Fetch data when the component is mounted
+    useEffect(() => {
+        fetchTeachers();
+    }, []); // Empty dependency array ensures it runs only once
+
     const renderItem = ({ item }) => (
         <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('TeacherDetails', { teacher: item })}>
             <Image source={{ uri: item.image }} style={styles.profileImage} />
@@ -47,11 +42,10 @@ export default function HomeScreen({navigation}) {
 
     return (
         <ScrollView style={styles.container}>
-             <TextInput
+            <TextInput
                 style={styles.input}
                 placeholder="Search for teacher by Subject"
                 keyboardType="email-address"
-                
                 autoCapitalize="none"
             />
             <Text style={styles.header}>Our Teachers</Text>
@@ -62,8 +56,8 @@ export default function HomeScreen({navigation}) {
                     data={teachers}
                     renderItem={renderItem}
                     keyExtractor={(item) => item.id}
-                    numColumns={2} 
-                    columnWrapperStyle={styles.row} 
+                    numColumns={2}
+                    columnWrapperStyle={styles.row}
                     contentContainerStyle={styles.listContainer}
                 />
             )}
@@ -87,14 +81,14 @@ const styles = StyleSheet.create({
         paddingBottom: 20,
     },
     row: {
-        justifyContent: 'space-between', 
+        justifyContent: 'space-between',
     },
     card: {
         backgroundColor: '#fff',
         padding: 10,
         borderRadius: 10,
         marginBottom: 15,
-        width: '48%', 
+        width: '48%',
         alignItems: 'center',
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 2 },
@@ -122,17 +116,16 @@ const styles = StyleSheet.create({
         color: '#666',
         marginTop: 5,
     },
-    // Search field
     input: {
-    borderColor: 'lightgray',
-    borderRadius: 5,
-    padding: 10,
-    marginBottom: 15,
-    backgroundColor: 'white',
-    shadowColor: '#000',
-    shadowOffset: { width: 3, height: 2 },
-    shadowOpacity: 0.3,
-    shadowRadius: 1,
-    elevation: 22,
-  },
+        borderColor: 'lightgray',
+        borderRadius: 5,
+        padding: 10,
+        marginBottom: 15,
+        backgroundColor: 'white',
+        shadowColor: '#000',
+        shadowOffset: { width: 3, height: 2 },
+        shadowOpacity: 0.3,
+        shadowRadius: 1,
+        elevation: 22,
+    },
 });
