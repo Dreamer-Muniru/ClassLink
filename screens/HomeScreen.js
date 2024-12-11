@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, ScrollView, Image, TextInput, StyleSheet, ActivityIndicator, TouchableOpacity } from 'react-native';
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
 import { app } from '../firebase/firebaseConfig';
+import Header from '../components/Header'
 
 export default function HomeScreen({ navigation }) {
     const [teachers, setTeachers] = useState([]);
@@ -42,6 +43,8 @@ export default function HomeScreen({ navigation }) {
 
     return (
         <ScrollView style={styles.container}>
+        {/* Display i */}
+        <Header/>
             <TextInput
                 style={styles.input}
                 placeholder="Search for teacher by Subject"
