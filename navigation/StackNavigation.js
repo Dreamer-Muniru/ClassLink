@@ -13,7 +13,7 @@ export default function StackNavigation({ isLoggedIn }) {
     <Stack.Navigator>
       {isLoggedIn ? (
         <>
-        <Stack.Screen name="Home" component={TabNavigation} options={{ headerShown: false }} />
+        <Stack.Screen name="Home-Tab" component={TabNavigation} options={{ headerShown: false }} />
         <Stack.Screen name="TeacherDetails" component={TeacherDetails} />
         </>
       ) : (

@@ -17,12 +17,13 @@ export default function TabNavigation() {
   return (
     
         <Tab.Navigator>
-           <Tab.Screen name="HomeScreen" component={HomeScreen} 
+           <Tab.Screen name="Home" component={HomeScreen} 
             options={{
                 tabBarLabel:()=>(
                     <Text style={{fontSize: 16, marginBottom: 3, marginTop: -6}}>Home</Text>
                 ),
-                // headerShown: null,
+
+                headerShown: null,
                 tabBarIcon:()=>(
                     <Ionicons name="home" size={20} color="#2a9d8f" />
                 )
