@@ -51,7 +51,8 @@ export default function Header({navigation}) {
         <View>
         <>
             {userInfo ?(
-                <View onPress={() =>navigation.navigate("Profile")}>
+                <View className="flex"
+                onPress={() =>navigation.navigate("Profile")}>
                     <Text> {userInfo.userName} </Text>
                     <Image
                     source={{uri: userInfo.image|| 'https://via.placeholder.com/40' }}
@@ -99,4 +100,5 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 18,
     },
+  
 });

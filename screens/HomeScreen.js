@@ -3,6 +3,7 @@ import { View, Text, FlatList, ScrollView, Image, TextInput, StyleSheet, Activit
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
 import { app } from '../firebase/firebaseConfig';
 import Header from '../components/Header'
+import { Ionicons } from '@expo/vector-icons';
 
 export default function HomeScreen({ navigation }) {
     const [teachers, setTeachers] = useState([]);
@@ -45,12 +46,11 @@ export default function HomeScreen({ navigation }) {
         <ScrollView style={styles.container}>
         {/* Display i */}
         <Header/>
-            <TextInput
-                style={styles.input}
-                placeholder="Search for teacher by Subject"
-                keyboardType="email-address"
-                autoCapitalize="none"
-            />
+         {/* Search Bar Section */}
+         <View style={styles.searchBar}>
+            <Ionicons name="search" size={24} color="black" />
+            <TextInput placeholder='Search' style={styles.searchInput} />
+        </View>
             <Text style={styles.header}>Our Teachers</Text>
             {loading ? (
                 <ActivityIndicator size="large" color="blue" />
@@ -132,4 +132,19 @@ const styles = StyleSheet.create({
         shadowRadius: 1,
         elevation: 22,
     },
+
+    searchBar:{
+        display: 'flex',
+        flexDirection: 'row',
+        padding: 10,
+        paddingBottom: 10,
+        backgroundColor: '#dbd7d7',
+        borderRadius: 20,
+        marginTop: 10
+    },
+    searchInput:{
+        fontSize: 18,
+        padding: 1,
+        paddingLeft: 5,
+    }
 });
