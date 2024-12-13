@@ -150,7 +150,7 @@ const Profile = ({ navigation }) => {
                     <FontAwesome5 name="user-graduate" size={40} color="#2a9d8f" />
                   </View>
                   <View className="pl-3">
-                    <Text className="text-center text-[22px] ml-[-80px] font-bold ">Qualification</Text>
+                    <Text className="text-left text-[22px] font-bold ">Qualification</Text>
                     <Text className="text-[18px] text-[#686262] mt-[-5px] pb-2 pl-[5px]">{userInfo.qualification}</Text>
                   </View>
                 </View>
@@ -191,7 +191,7 @@ const Profile = ({ navigation }) => {
                     <Entypo name="compass" size={45} color="#2a9d8f" />
                   </View>
                   <View className="ml-3">
-                    <Text className="text-center text-[22px] ml-[-40px] mb-1 font-bold ">Availability</Text>
+                    <Text className="text-left text-[22px] mb-1 font-bold ">Availability</Text>
                     <Text className="text-[18px] text-[#686262] pb-2 mt-[-5px] pl-[5px]">{userInfo.availability}</Text>
                   </View>
                 </View>
@@ -253,6 +253,12 @@ const Profile = ({ navigation }) => {
                         placeholder="Availability"
                         value={editData.availability}
                         onChangeText={(value) => handleEditChange('availability', value)}
+                      />
+                       <TextInput
+                        style={styles.input}
+                        placeholder="Location"
+                        value={editData.location}
+                        onChangeText={(value) => handleEditChange('location', value)}
                       />
                        <TextInput
                         style={styles.input}

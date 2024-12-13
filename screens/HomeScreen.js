@@ -50,7 +50,7 @@ export default function HomeScreen({ navigation }) {
          {/* Search Bar Section */}
          <View style={styles.searchBar}>
             <Ionicons name="search" size={24} color="black" />
-            <TextInput placeholder='Search' style={styles.searchInput} />
+            <TextInput placeholder='Search for Teacher' style={styles.searchInput} />
         </View>
         <View>
             <TrendingSubject/>

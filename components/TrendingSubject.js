@@ -1,5 +1,6 @@
 import { View, Text, TouchableOpacity, ScrollView } from 'react-native'
 import React from 'react'
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
 
 export default function TrendingSubject() {
@@ -7,7 +8,10 @@ export default function TrendingSubject() {
     <View>
       <View className="flex-row justify-between mt-5">
         <Text className="text-[20px] text-[#000] font-bold">Trending</Text>
-        <Text className="text-[20px] text-[#ec6f84] font-bold">Subjects</Text>
+        <Text className="text-[20px] text-[#ec6f84] font-bold">
+        Subjects
+        <MaterialIcons name="arrow-drop-down" size={24} color="black" />
+        </Text>
       </View>
       <View className="mt-5">
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>

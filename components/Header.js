@@ -53,9 +53,8 @@ export default function Header({navigation}) {
             {userInfo ?(
                 <View className="flex-row mt-8"
                 onPress={() =>navigation.navigate("Profile")}>
-                    <Text> {userInfo.userName} </Text>
                     <Image
-                    source={{uri: userInfo.image|| 'https://via.placeholder.com/40' }}
+                    source={{uri: userInfo.image|| 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzsIiMM2d05ReIRpGDPUCOiNDYyJXIV_pcUg&s' }}
                     style={styles.profileImage}
                 />
 
