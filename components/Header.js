@@ -51,7 +51,7 @@ export default function Header({navigation}) {
         <View>
         <>
             {userInfo ?(
-                <View className="flex"
+                <View className="flex-row mt-8"
                 onPress={() =>navigation.navigate("Profile")}>
                     <Text> {userInfo.userName} </Text>
                     <Image
@@ -60,8 +60,8 @@ export default function Header({navigation}) {
                 />
 
                 {/* Display welcome message and user's name */}
-                <View>
-                    <Text style={styles.welcome}>Welcome</Text>
+                <View className="ml-1">
+                    <Text style={styles.welcome}>Welcome,</Text>
                     <Text style={styles.userName}>{userInfo.fullName}</Text>
                 </View>
 
@@ -83,8 +83,8 @@ export default function Header({navigation}) {
 
 const styles = StyleSheet.create({
     profileImage: {
-        width: 40,
-        height: 40,
+        width: 60,
+        height: 60,
         borderRadius: 100,
     },
     container: {

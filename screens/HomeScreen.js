@@ -4,6 +4,7 @@ import { getFirestore, collection, getDocs } from 'firebase/firestore';
 import { app } from '../firebase/firebaseConfig';
 import Header from '../components/Header'
 import { Ionicons } from '@expo/vector-icons';
+import TrendingSubject from '../components/TrendingSubject';
 
 export default function HomeScreen({ navigation }) {
     const [teachers, setTeachers] = useState([]);
@@ -51,7 +52,10 @@ export default function HomeScreen({ navigation }) {
             <Ionicons name="search" size={24} color="black" />
             <TextInput placeholder='Search' style={styles.searchInput} />
         </View>
-            <Text style={styles.header}>Our Teachers</Text>
+        <View>
+            <TrendingSubject/>
+        </View>
+            <Text className="text-[24px] mt-[20px] text-[#e94560] font-bold mb-3">Our Teachers</Text>
             {loading ? (
                 <ActivityIndicator size="large" color="blue" />
             ) : (
@@ -73,12 +77,6 @@ const styles = StyleSheet.create({
         flex: 1,
         paddingTop: 10,
         paddingHorizontal: 10,
-    },
-    header: {
-        fontSize: 24,
-        fontWeight: 'bold',
-        textAlign: 'center',
-        marginBottom: 10,
     },
     listContainer: {
         paddingBottom: 20,
