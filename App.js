@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { auth } from './firebase/firebaseConfig'; 
 import { onAuthStateChanged } from 'firebase/auth';
 
+
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -24,6 +25,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <StackNavigation isLoggedIn={isLoggedIn} />
+      <StatusBar style="auto" color="gray" />
     </NavigationContainer>
   );
 }

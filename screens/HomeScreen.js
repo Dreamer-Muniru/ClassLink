@@ -47,11 +47,13 @@ export default function HomeScreen({ navigation }) {
     return (
         <ScrollView style={styles.container}>
         {/* Display i */}
-        <Header/>
+        <View className="mt-5">
+            <Header/>
+        </View>
          {/* Search Bar Section */}
          <View style={styles.searchBar}>
             <Ionicons name="search" size={24} color="black" />
-            <TextInput placeholder='Search for Teacher' style={styles.searchInput} />
+            <TextInput placeholder='Find a teacher' style={styles.searchInput} />
         </View>
         <View>
             <TrendingSubject/>
@@ -77,8 +79,10 @@ export default function HomeScreen({ navigation }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingTop: 10,
         paddingHorizontal: 10,
+        margin: 0,
+        padding: 0,
+
     },
     listContainer: {
         paddingBottom: 20,
@@ -139,7 +143,7 @@ const styles = StyleSheet.create({
         padding: 10,
         paddingBottom: 10,
         backgroundColor: '#dbd7d7',
-        borderRadius: 20,
+        borderRadius: 10,
         marginTop: 10
     },
     searchInput:{
