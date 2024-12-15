@@ -34,7 +34,7 @@ export default function TrendingSubject() {
        
         </ScrollView>
       </View>
-        <StatusBar style="auto" color="gray" />
+        <StatusBar style="auto" color="black" />
     </View>
   )
 }

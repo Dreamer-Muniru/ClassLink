@@ -76,7 +76,7 @@ export default function Header({navigation}) {
            
             </View>
         </>
-          <StatusBar style="auto" color="gray" />
+          <StatusBar style="auto" color="black" />
         </View>
     );
 }

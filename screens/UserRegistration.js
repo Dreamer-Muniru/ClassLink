@@ -200,7 +200,7 @@ export default function UserRegistration({ navigation }) {
                 <Text className="text-[22px] text-center bg-[#2a9d8f] text-white w-[150px] p-3 ml-[100px] rounded-md ">Login</Text>
                 </TouchableOpacity>
             </View>
-            <StatusBar style="auto" color="gray" />
+            <StatusBar style="auto" color="black" />
         </ScrollView>
     );
 }

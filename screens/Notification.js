@@ -66,7 +66,7 @@ export default function Notification() {
       ) : (
         <Text>There's no Notification yet</Text>
       )}
-      <StatusBar style="auto" color="gray" />
+      <StatusBar style="auto" color="black" />
     </View>
   );
 }

@@ -71,7 +71,7 @@ export default function HomeScreen({ navigation }) {
                     contentContainerStyle={styles.listContainer}
                 />
             )}
-            <StatusBar style="auto" color="gray" />
+            <StatusBar style="auto" color="black" />
         </ScrollView>
     );
 }

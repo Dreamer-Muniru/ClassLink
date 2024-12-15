@@ -62,7 +62,7 @@ export default function Resources() {
                     <Text style={styles.sendButtonText}>Send</Text>
                 </TouchableOpacity>
             </View>
-            <StatusBar style="auto" color="gray" />
+            <StatusBar style="auto" color="black" />
         </View>
     );
 }

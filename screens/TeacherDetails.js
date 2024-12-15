@@ -66,7 +66,7 @@ export default function TeacherDetails({ route }) {
           <Text className="text-lg text-white text-center font-bold">Book</Text>
         </TouchableOpacity>
       </View>
-       <StatusBar style="auto" color="gray" />
+       <StatusBar style="auto" color="black" />
     </ScrollView>
   );
 }

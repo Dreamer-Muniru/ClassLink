@@ -25,7 +25,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <StackNavigation isLoggedIn={isLoggedIn} />
-      <StatusBar style="auto" color="gray" />
+      <StatusBar style="auto" color="black" />
     </NavigationContainer>
   );
 }

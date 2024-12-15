@@ -284,7 +284,7 @@ const Profile = ({ navigation }) => {
       <TouchableOpacity className="w-[140px] mb-[50px] bg-[#e63946] h-[50px] rounded-md ml-[120px] mt-[50px]" onPress={handleLogout}>
         <Text className="text-center pt-2 text-[#fff] font-bold text-[22px]">Logout</Text>
       </TouchableOpacity>
-      <StatusBar style="auto" color="gray" />
+      <StatusBar style="auto" color="black" />
     </ScrollView>
   );
 };
