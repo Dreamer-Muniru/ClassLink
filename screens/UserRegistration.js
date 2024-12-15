@@ -7,6 +7,7 @@ import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { Formik } from 'formik';
 import { Picker } from '@react-native-picker/picker';
 import * as ImagePicker from 'expo-image-picker';
+import { StatusBar } from 'expo-status-bar';
 
 export default function UserRegistration({ navigation }) {
     const [loading, setLoading] = useState(false);
@@ -199,6 +200,7 @@ export default function UserRegistration({ navigation }) {
                 <Text className="text-[22px] text-center bg-[#2a9d8f] text-white w-[150px] p-3 ml-[100px] rounded-md ">Login</Text>
                 </TouchableOpacity>
             </View>
+            <StatusBar style="auto" color="gray" />
         </ScrollView>
     );
 }

@@ -1,6 +1,7 @@
 import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
 import React from 'react';
 import { Linking } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
 
 export default function TeacherDetails({ route }) {
   const { teacher } = route.params || {}
@@ -65,6 +66,7 @@ export default function TeacherDetails({ route }) {
           <Text className="text-lg text-white text-center font-bold">Book</Text>
         </TouchableOpacity>
       </View>
+       <StatusBar style="auto" color="gray" />
     </ScrollView>
   );
 }

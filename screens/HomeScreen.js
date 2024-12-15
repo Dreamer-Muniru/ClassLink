@@ -5,6 +5,7 @@ import { app } from '../firebase/firebaseConfig';
 import Header from '../components/Header'
 import { Ionicons } from '@expo/vector-icons';
 import TrendingSubject from '../components/TrendingSubject';
+import { StatusBar } from 'expo-status-bar';
 
 export default function HomeScreen({ navigation }) {
     const [teachers, setTeachers] = useState([]);
@@ -55,7 +56,7 @@ export default function HomeScreen({ navigation }) {
         <View>
             <TrendingSubject/>
         </View>
-            <Text className="text-[24px] mt-[20px] text-[#e94560] font-bold mb-3">Our Teachers</Text>
+            <Text className="text-[24px] text-center mt-[20px] text-[#e94560] font-bold mb-3">Our Teachers</Text>
             {loading ? (
                 <ActivityIndicator size="large" color="blue" />
             ) : (
@@ -68,6 +69,7 @@ export default function HomeScreen({ navigation }) {
                     contentContainerStyle={styles.listContainer}
                 />
             )}
+            <StatusBar style="auto" color="gray" />
         </ScrollView>
     );
 }

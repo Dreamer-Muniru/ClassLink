@@ -2,6 +2,8 @@ import { View, Text, Image, StyleSheet, FlatList, TouchableOpacity } from 'react
 import React, { useEffect, useState } from 'react';
 import { collection, getFirestore, onSnapshot, query, orderBy } from 'firebase/firestore';
 import { useNavigation } from '@react-navigation/native'; // Import for navigation
+import { StatusBar } from 'expo-status-bar';
+
 
 export default function Notification() {
   const [notifications, setNotifications] = useState([]);
@@ -64,6 +66,7 @@ export default function Notification() {
       ) : (
         <Text>There's no Notification yet</Text>
       )}
+      <StatusBar style="auto" color="gray" />
     </View>
   );
 }

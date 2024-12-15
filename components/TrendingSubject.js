@@ -6,14 +6,14 @@ import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 export default function TrendingSubject() {
   return (
     <View>
-      <View className="flex-row justify-between mt-5">
+      <View className="flex-row justify-between mt-5 ">
         <Text className="text-[20px] text-[#000] font-bold">Trending</Text>
         <Text className="text-[20px] text-[#ec6f84] font-bold">
         Subjects
         <MaterialIcons name="arrow-drop-down" size={24} color="black" />
         </Text>
       </View>
-      <View className="mt-5">
+      <View className="mt-1">
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
             <TouchableOpacity className="w-[110px] flex-row h-[58px] mr-4 bg-[#2a9d8f] rounded-md">
                 <Text className="text-[#fff] text-[18px] justify-center pt-4 pl-3 text-center font-bold">Chemistry</Text>

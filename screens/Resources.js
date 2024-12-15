@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, ScrollView, StyleSheet, ActivityIndicator } from 'react-native';
 import axios from 'axios';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-
+import { StatusBar } from 'expo-status-bar';
 
 export default function Resources() {
     const [userInput, setUserInput] = useState('');
@@ -62,6 +62,7 @@ export default function Resources() {
                     <Text style={styles.sendButtonText}>Send</Text>
                 </TouchableOpacity>
             </View>
+            <StatusBar style="auto" color="gray" />
         </View>
     );
 }

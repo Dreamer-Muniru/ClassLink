@@ -11,6 +11,7 @@ import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import Entypo from '@expo/vector-icons/Entypo';
+import { StatusBar } from 'expo-status-bar';
 
 const Profile = ({ navigation }) => {
   const [userInfo, setUserInfo] = useState(null);
@@ -195,7 +196,7 @@ const Profile = ({ navigation }) => {
                     <Text className="text-[18px] text-[#686262] pb-2 mt-[-5px] pl-[5px]">{userInfo.availability}</Text>
                   </View>
                 </View>
-      
+               
               </View>
             )}
 
@@ -283,6 +284,7 @@ const Profile = ({ navigation }) => {
       <TouchableOpacity className="w-[140px] mb-[50px] bg-[#e63946] h-[50px] rounded-md ml-[120px] mt-[50px]" onPress={handleLogout}>
         <Text className="text-center pt-2 text-[#fff] font-bold text-[22px]">Logout</Text>
       </TouchableOpacity>
+      <StatusBar style="auto" color="gray" />
     </ScrollView>
   );
 };
