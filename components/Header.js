@@ -3,7 +3,7 @@ import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { auth } from '../firebase/firebaseConfig';
 import { getFirestore, query, where, getDocs, collection, updateDoc, doc } from 'firebase/firestore';
 import { app } from '../firebase/firebaseConfig';
-
+import { StatusBar } from 'expo-status-bar';
 
 export default function Header({navigation}) {
    
@@ -51,7 +51,7 @@ export default function Header({navigation}) {
         <View>
         <>
             {userInfo ?(
-                <View className="flex-row mt-8"
+                <View className="flex-row mt-3"
                 onPress={() =>navigation.navigate("Profile")}>
                     <Image
                     source={{uri: userInfo.image|| 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzsIiMM2d05ReIRpGDPUCOiNDYyJXIV_pcUg&s' }}
@@ -76,6 +76,7 @@ export default function Header({navigation}) {
            
             </View>
         </>
+          <StatusBar style="auto" color="gray" />
         </View>
     );
 }

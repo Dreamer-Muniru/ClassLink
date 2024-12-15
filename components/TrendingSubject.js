@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity, ScrollView } from 'react-native'
 import React from 'react'
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-
+import { StatusBar } from 'expo-status-bar';
 
 export default function TrendingSubject() {
   return (
@@ -34,6 +34,7 @@ export default function TrendingSubject() {
        
         </ScrollView>
       </View>
+        <StatusBar style="auto" color="gray" />
     </View>
   )
 }
