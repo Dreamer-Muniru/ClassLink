@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
         gap: 10,
     },
     welcome: {
-        fontSize: 16,
+        fontSize: 17,
     },
     userName: {
         fontWeight: 'bold',
