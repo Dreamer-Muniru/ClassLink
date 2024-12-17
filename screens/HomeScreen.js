@@ -33,7 +33,7 @@ export default function HomeScreen({ navigation }) {
     // Fetch data when the component is mounted
     useEffect(() => {
         fetchTeachers();
-    }, []); // Empty dependency array ensures it runs only once
+    }, []);
 
     const renderItem = ({ item }) => (
         <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('TeacherDetails', { teacher: item })}>

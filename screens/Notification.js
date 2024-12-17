@@ -1,7 +1,7 @@
 import { View, Text, Image, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { collection, getFirestore, onSnapshot, query, orderBy } from 'firebase/firestore';
-import { useNavigation } from '@react-navigation/native'; // Import for navigation
+import { useNavigation } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
 
 

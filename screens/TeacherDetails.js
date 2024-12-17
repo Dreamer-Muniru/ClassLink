@@ -61,9 +61,9 @@ export default function TeacherDetails({ route }) {
       <View className="items-center mt-6 mb-9">
         <TouchableOpacity
           onPress={handleBookPress}
-          className="bg-[#e63946] w-[150px] py-3 px-6 rounded-full shadow-lg"
+          className="bg-[#e63946] w-[150px] py-3 px-6 rounded-md shadow-lg"
         >
-          <Text className="text-lg text-white text-center font-bold">Book</Text>
+          <Text className="text-lg text-white text-[22px] text-center font-bold">Book</Text>
         </TouchableOpacity>
       </View>
        <StatusBar style="auto" color="black" />
