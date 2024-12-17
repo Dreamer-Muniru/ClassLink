@@ -49,7 +49,7 @@ export default function Notification() {
           <Text className="text-[#000] font-bold">{item.name}</Text>{' '}
           has been onboarded as{' '}
           <Text className="text-[#000] font-bold" >{item.specialization} Teacher</Text>{' '}
-          on <Text className="text-[#cecaca] font-bold" >{item.date}</Text>
+          on <Text className="text-[#8f8b8b] font-bold" >{item.date}</Text>
         </Text>
       </View>
     </TouchableOpacity>

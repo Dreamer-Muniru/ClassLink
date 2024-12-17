@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     },
     userMessage: {
          alignSelf: 'flex-end', 
-         backgroundColor: '#d1f7c4',
+         backgroundColor: '#2a9d8f',
         borderRadius: 10, 
         padding: 10, 
         marginVertical: 5 
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
     sendButton: { 
         backgroundColor: '#2a9d8f', 
         padding: 10, 
-        borderRadius: 20 
+        borderRadius: 15 
     },
     sendButtonText: {
          color: '#fff', 
