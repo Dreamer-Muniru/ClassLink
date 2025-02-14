@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, ScrollView, StyleSheet, ActivityIndicator } from 'react-native';
 import axios from 'axios';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { StatusBar } from 'expo-status-bar';
+import {openAI} from 'openai';
+
+// Initialize the API key and base URL
+const DEEPSEEK_API_KEY = "" 
+const DEEPSEEK_API_URL = 'https://api.deepseek.com/v1/chat/completions'; 
 
 export default function Resources() {
     const [userInput, setUserInput] = useState('');
@@ -18,22 +22,32 @@ export default function Resources() {
         
         try {
             setLoading(true);
-            const response = await axios.post('https://api.openai.com/v1/chat/completions', {
-                model: "gpt-3.5-turbo",
-                messages: [{ role: "user", content: userInput }],
-            }, {
-                headers: {
-                    'Authorization': `Bearer YOUR_OPENAI_API_KEY`,
-                    'Content-Type': 'application/json'
-                }
-            });
 
+            // Send the user's message to DeepSeek's API using axios
+            const response = await axios.post(
+                DEEPSEEK_API_URL,
+                {
+                    model: "deepseek-chat", // DeepSeek's model name
+                    messages: [
+                        { role: "system", content: "You are a helpful assistant." }, 
+                        { role: "user", content: userInput }, 
+                    ],
+                },
+                {
+                    headers: {
+                        'Authorization': `Bearer ${DEEPSEEK_API_KEY}`,
+                        'Content-Type': 'application/json',
+                    },
+                }
+            );
+
+            // Extract the AI's response
             const aiMessage = { sender: 'bot', text: response.data.choices[0].message.content };
             setChatMessages(prevMessages => [...prevMessages, aiMessage]);
         } catch (error) {
+            console.error('API Error:', error);
             const errorMessage = { sender: 'bot', text: 'Something went wrong. Please try again later.' };
             setChatMessages(prevMessages => [...prevMessages, errorMessage]);
-            console.error(error);
         } finally {
             setLoading(false);
         }
