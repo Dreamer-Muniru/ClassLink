@@ -20,6 +20,7 @@
         "backgroundColor": "#ffffff"
       },
       "package": "com.muniru_dreamer.ClassLink"
+      
     },
     "web": {
       "favicon": "./assets/favicon.png"

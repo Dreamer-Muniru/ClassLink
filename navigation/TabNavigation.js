@@ -24,6 +24,9 @@ export default function TabNavigation() {
                 ),
 
                 headerShown: null,
+                headerStyle:{
+                        backgroundColor: 'lightgray'
+                    },
                 tabBarIcon:()=>(
                     <Ionicons name="home" size={20} color="#2a9d8f" />
                 )
@@ -33,6 +36,9 @@ export default function TabNavigation() {
                     tabBarLabel:()=>(
                         <Text style={{fontSize: 16, marginBottom: 3, marginTop: -6}}>Resources</Text>
                     ),
+                    headerStyle:{
+                        backgroundColor: 'lightgray'
+                    },
                     tabBarIcon:()=>(
                         <FontAwesome5 name="chalkboard-teacher" size={20} color="#2a9d8f" />
                     )
@@ -43,6 +49,9 @@ export default function TabNavigation() {
                     tabBarLabel:()=>(
                         <Text style={{fontSize: 16, marginBottom: 3, marginTop: -6}}>Notification</Text>
                     ),
+                    headerStyle:{
+                        backgroundColor: 'lightgray'
+                    },
                     tabBarIcon:()=>(
                         <Ionicons name="notifications" size={24} color="#2a9d8f" />
                     
@@ -54,6 +63,9 @@ export default function TabNavigation() {
                     tabBarLabel:()=>(
                         <Text style={{fontSize: 16, marginBottom: 3, marginTop: -6}}>Profile</Text>
                     ),
+                    headerStyle:{
+                        backgroundColor: 'lightgray'
+                    },
                     tabBarIcon:()=>(
                         <FontAwesome name="user" size={24} color="#2a9d8f" />
                     
