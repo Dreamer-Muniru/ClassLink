@@ -5,7 +5,7 @@ import { StatusBar } from 'expo-status-bar';
 import {openAI} from 'openai';
 
 // Initialize the API key and base URL
-const DEEPSEEK_API_KEY 
+const DEEPSEEK_API_KEY = ""
 const DEEPSEEK_API_URL = 'https://api.deepseek.com/v1/chat/completions'; 
 
 export default function Resources() {

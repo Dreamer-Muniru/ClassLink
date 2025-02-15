@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
     name: {
-        fontSize: 16,
+        fontSize: 15,
         fontWeight: 'bold',
     },
     specialization: {
