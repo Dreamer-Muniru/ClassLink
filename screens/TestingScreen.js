@@ -66,9 +66,9 @@
 
 //   if (loading) {
 //     return (
-//       <View style={styles.container}>
-//         <ActivityIndicator size="large" color="#007bff" />
-//       </View>
+    //   <View style={styles.container}>
+    //     <ActivityIndicator size="large" color="#007bff" />
+    //   </View>
 //     );
 //   }
 
@@ -114,7 +114,7 @@
 //               <Text className="text-center text-[30px] mb-[40px]" >Welcome {userInfo.fullName}</Text>
 //               <Text className="text-[24px] text-left pl-5 font-bold mb-5 text-[#2a9d8f] " >User Details</Text>
 //               <Text className="text-center text-[18px] pb-5" >Contact: {userInfo.phoneNumber} </Text>
-//               <Text className="text-center text-[18px]">Email: {auth.currentUser.email}</Text>
+              <Text className="text-center text-[18px]">Email: {auth.currentUser.email}</Text>
 
 //             </View>
 //             </>
