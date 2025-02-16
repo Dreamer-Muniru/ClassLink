@@ -239,7 +239,7 @@ const styles = StyleSheet.create({
     error: { 
         color: 'red', 
         fontSize: 16, 
-        marginBottom: 5 
+        marginBottom: 6 
     },
     currencyContainer: { 
         flexDirection: 'row', 
